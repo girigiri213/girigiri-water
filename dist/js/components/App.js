@@ -1,8 +1,12 @@
 import React from 'react'
 import Nav from './Nav'
+import MainView from './MainView'
 
 const App = () => (
-  <Nav />
+  <div>
+    <Nav />
+    <MainView />
+  </div>
 )
 
 export default App

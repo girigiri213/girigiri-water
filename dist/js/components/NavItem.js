@@ -21,8 +21,11 @@ const NavItem = ({ href, btnType, text }) => {
 }
 
 NavItem.propTypes = {
+  // the side button's reference link
   href: PropTypes.string.isRequired,
+  // the icon style of the item
   btnType: PropTypes.string.isRequired,
+  // the item's name
   text: PropTypes.string.isRequired
 }
 
