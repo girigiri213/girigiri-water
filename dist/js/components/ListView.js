@@ -1,8 +1,15 @@
 import React, { PropTypes } from 'react'
 import ListItem from './ListItem'
+import FormClientView from './FormClientView'
+import FormReportRepairView from './FormReportRepairView'
+import FormDeviceView from './FormDeviceView'
+import FormRepairInfoView from './FormRepairInfoView'
+import FormComponentView from './FormComponentView'
+import FormComTurnoverView from './FormComTurnoverView'
 
-const ListView = ({ listname, items }) => {
+const ListView = ({ listname, items, btns }) => {
   let listItems = []
+  let buttons = []
   items.forEach(item => {
     listItems.push(
       <ListItem
@@ -13,16 +20,30 @@ const ListView = ({ listname, items }) => {
       />
     )
   })
+  btns.forEach(button => {
+    buttons.push(
+      <button type="button" className="btn btn-primary btn-sm pull-right">
+        {button.text}
+      </button>
+    )
+  })
 
   return (
     <div className="row">
       <div className="panel panel-default">
         <div className="panel-heading">
           {listname}
+          {buttons}
         </div>
         <div className="panel-body">
           <div className="list-group">
             {listItems}
+            <FormClientView />
+            <FormReportRepairView />
+            <FormDeviceView />
+            <FormRepairInfoView />
+            <FormComponentView />
+            <FormComTurnoverView />
           </div>
         </div>
       </div>
@@ -40,6 +61,11 @@ ListView.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+
+  // the button's info
+  btns: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string.isRequired
   }).isRequired).isRequired
 }
 
