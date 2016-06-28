@@ -3,7 +3,7 @@ import NavItem from '../components/NavItem'
 import { ICON_DASHBOARD } from '../components/const'
 
 const getRefProps = ( /*state*/ ) => {
-  return "/customer"
+  return "/dashboard/customer"
 }
 
 const getBtnTypeProps = ( /*state*/ ) => {

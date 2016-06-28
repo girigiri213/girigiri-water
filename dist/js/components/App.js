@@ -6,18 +6,23 @@ import MainViewReport from './MainViewReport'
 import MainViewRepair from './MainViewRepair'
 import MainViewComStore from './MainViewComStore'
 import MainViewComTurnover from './MainViewComTurnover'
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import LoginForm from './LoginForm'
+import { Router, Route, IndexRoute, IndexRedirect, Link, hashHistory } from 'react-router'
 
 const App = () => (
   <div>
-    <Router history={browserHistory}>
-      <Route path="/" component={Nav}>
-        <IndexRoute component={MainView} />
-        <Route path="customer" component={MainViewClient} />
-        <Route path="component-store" component={MainViewComStore} />
-        <Route path="component-turnover" component={MainViewComTurnover} />
-        <Route path="repair" component={MainViewRepair} />
-        <Route path="report" component={MainViewReport} />
+    <Router history={hashHistory}>
+      <Route path="/">
+        <IndexRedirect to="dashboard" />
+        <Route path="dashboard" component={Nav}>
+          <IndexRoute component={MainView} />
+          <Route path="customer"component={MainViewClient} />
+          <Route path="component-store" component={MainViewComStore} />
+          <Route path="component-turnover" component={MainViewComTurnover} />
+          <Route path="repair" component={MainViewRepair} />
+          <Route path="report" component={MainViewReport} />
+        </Route>
+        <Route path="login" component={LoginForm} />
       </Route>
     </Router>
   </div>

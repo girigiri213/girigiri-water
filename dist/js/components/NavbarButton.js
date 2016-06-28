@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 const NavbarButton = ({username}) => (
   <li className="dropdown">
@@ -10,7 +11,7 @@ const NavbarButton = ({username}) => (
       </i>
     </a>
     <ul className="dropdown-menu dropdown-user">
-      <li><a href="login.html"><i className="fa fa-sign-out fa-fw"></i> Logout</a>
+      <li><Link to="/login"><i className="fa fa-sign-out fa-fw"></i> Logout</Link>
       </li>
     </ul>
   </li>

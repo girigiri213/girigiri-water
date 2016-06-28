@@ -4,13 +4,13 @@ import VisibleNavItem from '../containers/VisibleNavItem'
 
 let userItems = [
   {
-    href: "customer"
+    href: "dashboard/customer"
   },
   {
-    href: "component-store"
+    href: "dashboard/component-store"
   },
   {
-    href: "component-turnover"
+    href: "dashboard/component-turnover"
   }
 ]
 

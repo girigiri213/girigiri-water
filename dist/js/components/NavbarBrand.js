@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const NavbarBrand = () => (
-  <a className="navbar-brand" href="index.html">维修系统</a>
+  <Link className="navbar-brand" to="/">维修管理系统</Link>
 )
 
 export default NavbarBrand
