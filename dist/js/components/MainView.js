@@ -1,11 +1,10 @@
 import React from 'react'
 import VisibleListView from '../containers/VisibleListView'
-import VisibleMainTitle from '../containers/VisibleMainTitle'
+import MainTitle from './MainTitle'
 
 const MainView = () =>(
   <div id="page-wrapper">
-    <VisibleMainTitle />
-    <VisibleListView />
+    <MainTitle title="Welcome!"/>
   </div>
 )
 

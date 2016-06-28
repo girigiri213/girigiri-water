@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { ICON_DASHBOARD } from './const'
+import { Link } from 'react-router'
 
 const NavItem = ({ href, btnType, text }) => {
   let icon
@@ -12,10 +13,10 @@ const NavItem = ({ href, btnType, text }) => {
   }
   return (
     <li>
-      <a href={href}>
+      <Link to={href}>
         {icon}
         {text}
-      </a>
+      </Link>
     </li>
   )
 }
