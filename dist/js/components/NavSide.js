@@ -1,24 +1,18 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import NavSearch from './NavSearch'
-import VisibleNavItem from '../containers/VisibleNavItem'
+import NavItem from './NavItem'
 
-let userItems = [
-  {
-    href: "dashboard/customer"
-  },
-  {
-    href: "dashboard/component-store"
-  },
-  {
-    href: "dashboard/component-turnover"
-  }
-]
-
-const NavSide = () =>{
+const NavSide = ({ navItems }) =>{
   let items = []
   // TODO: use state info
-  userItems.forEach(() => {
-    items.push(<VisibleNavItem />)
+  navItems.forEach(item => {
+    items.push(
+      <NavItem
+        href={item.href} 
+        btnType={item.btnType} 
+        text={item.text}
+      />
+    )
   })
 
   return (
@@ -31,6 +25,14 @@ const NavSide = () =>{
       </div>
     </div>
   )
+}
+
+NavSide.propTypes = {
+  navItems : PropTypes.arrayOf(PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    btnType: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired).isRequired
 }
 
 export default NavSide
