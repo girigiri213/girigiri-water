@@ -6,7 +6,7 @@ import MainViewReport from './MainViewReport'
 import MainViewRepair from './MainViewRepair'
 import MainViewComStore from './MainViewComStore'
 import MainViewComTurnover from './MainViewComTurnover'
-import LoginForm from './LoginForm'
+import VisibleLogin from '../containers/VisibleLogin'
 import { Router, Route, IndexRoute, IndexRedirect, Link, hashHistory } from 'react-router'
 
 const App = () => (
@@ -22,7 +22,7 @@ const App = () => (
           <Route path="repair" component={MainViewRepair} />
           <Route path="report" component={MainViewReport} />
         </Route>
-        <Route path="login" component={LoginForm} />
+        <Route path="login" component={VisibleLogin} />
       </Route>
     </Router>
   </div>

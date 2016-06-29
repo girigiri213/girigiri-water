@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
-const NavbarButton = ({username}) => (
+const NavbarButton = ({username, onClick}) => (
   <li className="dropdown">
     <a className="dropdown-toggle" data-toggle="dropdown" href="#">
       <i className="fa fa-user fa-fw">
@@ -11,7 +11,7 @@ const NavbarButton = ({username}) => (
       </i>
     </a>
     <ul className="dropdown-menu dropdown-user">
-      <li><Link to="/login"><i className="fa fa-sign-out fa-fw"></i> Logout</Link>
+      <li><Link to="/login" onClick={onClick}><i className="fa fa-sign-out fa-fw"></i> Logout</Link>
       </li>
     </ul>
   </li>
