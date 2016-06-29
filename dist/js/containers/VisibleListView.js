@@ -42,7 +42,8 @@ let testItems = [
 
 let testBtns = [
   {
-    text: "新建"
+    text: "新建",
+    href: "#clientForm"
   }
 ]
 

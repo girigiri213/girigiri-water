@@ -22,7 +22,7 @@ const ListView = ({ listname, items, btns }) => {
   })
   btns.forEach(button => {
     buttons.push(
-      <button type="button" className="btn btn-primary btn-sm pull-right">
+      <button type="button" className="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target={button.href}>
         {button.text}
       </button>
     )
@@ -65,7 +65,8 @@ ListView.propTypes = {
 
   // the button's info
   btns: PropTypes.arrayOf(PropTypes.shape({
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired
   }).isRequired).isRequired
 }
 

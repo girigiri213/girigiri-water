@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { ICON_TASK, ICON_DASHBOARD, ICON_WRENCH, ICON_USERS } from '../components/const'
+import { ICON_TASK, ICON_DASHBOARD, ICON_WRENCH, ICON_USERS, ICON_GEAR, ICON_EXCHANGE } from '../components/const'
 import NavSide from '../components/NavSide'
 
 let userItems = [
@@ -20,12 +20,12 @@ let userItems = [
   },
   {
     href: "dashboard/component-store",
-    btnType: ICON_DASHBOARD,
+    btnType: ICON_GEAR,
     text: "备件管理"
   },
   {
     href: "dashboard/component-turnover",
-    btnType: ICON_DASHBOARD,
+    btnType: ICON_EXCHANGE,
     text: "备件流水管理"
   }
 ]

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ICON_DASHBOARD, ICON_TASK, ICON_WRENCH, ICON_USERS } from './const'
+import { ICON_DASHBOARD, ICON_TASK, ICON_WRENCH, ICON_USERS, ICON_GEAR, ICON_EXCHANGE } from './const'
 import { Link } from 'react-router'
 
 const NavItem = ({ href, btnType, text }) => {
@@ -16,6 +16,12 @@ const NavItem = ({ href, btnType, text }) => {
       break
     case ICON_USERS:
       icon = (<i className="fa fa-users fa-fw"></i>)
+      break
+    case ICON_GEAR:
+      icon = (<i className="fa fa-cog fa-fw"></i>)
+      break
+    case ICON_EXCHANGE:
+      icon = (<i className="fa fa-exchange fa-fw"></i>)
       break
     default:
       icon = (<i></i>)
