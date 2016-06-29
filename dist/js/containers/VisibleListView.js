@@ -1,69 +1,65 @@
 import { connect } from 'react-redux'
 import ListView from '../components/ListView'
 
-let testItems = [
-  {
-    id: 1,
-    name: "客户信息表单",
-    date: "2016/6/25",
-    href: "#clientForm"
-  },
-  {
-    id: 2,
-    name: "报修记录表单",
-    date: "2016/6/26",
-    href: "#reportForm"
-  },
-  {
-    id: 3,
-    name: "报修设备表单",
-    date: "2016/6/26",
-    href: "#deviceForm"
-  },
-  {
-    id: 4,
-    name: "维修记录表单",
-    date: "2016/6/26",
-    href: "#repairForm"
-  },
-  {
-    id: 5,
-    name: "备件表单",
-    date: "2016/6/26",
-    href: "#componentForm"
-  },
-  {
-    id: 6,
-    name: "备件流水明细表单",
-    date: "2016/6/26",
-    href: "#comTurnoverForm"
+import {
+  DASHBOARD_CLIENT,
+  DASHBOARD_COM_STORE,
+  DASHBOARD_COM_TURNOVER,
+  DASHBOARD_REPAIR,
+  DASHBOARD_REPORT,
+  DASHBOARD_WELCOME
+} from '../const/dashboard'
+
+const getItemsProps = (state) => {
+  return state.dashboardData[state.selectedDashboard]
+}
+
+const getBtnsProps = (state) => {
+  let btns=[{text:"新建", href: "#"}]
+  switch (state.selectedDashboard) {
+    case DASHBOARD_CLIENT:
+      btns[0].href = "#clientForm"
+      break
+    case DASHBOARD_REPORT:
+      btns[0].href = "#reportForm"
+      break
+    case DASHBOARD_REPAIR:
+      btns[0].href = "#repairForm"
+      break
+    case DASHBOARD_COM_STORE:
+      btns[0].href = "#componentForm"
+      break
+    case DASHBOARD_COM_TURNOVER:
+      btns[0].href= "#comTurnoverForm"
+      break
+    default:
+      break
   }
-]
+  return btns
+}
 
-let testBtns = [
-  {
-    text: "新建",
-    href: "#clientForm"
+const getListnameProps = (state) => {
+  switch (state.selectedDashboard) {
+    case DASHBOARD_CLIENT:
+      return "客户信息记录"
+    case DASHBOARD_REPORT:
+      return "报修记录"
+    case DASHBOARD_REPAIR:
+      return "维修记录"
+    case DASHBOARD_COM_STORE:
+      return "备件库存记录"
+    case DASHBOARD_COM_TURNOVER:
+      return "备件流水记录"
+    default:
+      return "error"
   }
-]
-
-const getItemsProps = ( /*state*/ ) => {
-  return testItems
 }
 
-const getBtnsProps = ( /*state*/ ) => {
-  return testBtns
-}
-
-const getListnameProps = ( /*state*/ ) => {
-  return "TestList"
-}
-
-const mapStateToProps = ( /*state*/ ) => {
+const mapStateToProps = (state) => {
   return {
-    items: getItemsProps(),
-    btns: getBtnsProps(),
-    listname: getListnameProps()
+    items: getItemsProps(state),
+    btns: getBtnsProps(state),
+    listname: getListnameProps(state)
   }
 }
 

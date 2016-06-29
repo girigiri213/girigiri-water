@@ -14,7 +14,8 @@ import {
   ROLE_CUSTOMER_SERVICE,
   ROLE_ENGINEER,
   ROLE_REPO_MANAGER,
-  ROLE_TASK_SCHEDULER
+  ROLE_TASK_SCHEDULER,
+  ROLE_SUPERUSER
 } from '../const/role'
 
 import { selectDashBoard } from '../actions/dashboard'
@@ -62,6 +63,13 @@ const mapRoleToNavItems = {
   ],
   [ROLE_TASK_SCHEDULER]: [
     mapDashboardToNavItem[DASHBOARD_REPAIR]
+  ],
+  [ROLE_SUPERUSER]: [
+    mapDashboardToNavItem[DASHBOARD_CLIENT],
+    mapDashboardToNavItem[DASHBOARD_REPORT],
+    mapDashboardToNavItem[DASHBOARD_REPAIR],
+    mapDashboardToNavItem[DASHBOARD_COM_STORE],
+    mapDashboardToNavItem[DASHBOARD_COM_TURNOVER]
   ]
 }
 

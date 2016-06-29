@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import ListItem from './ListItem'
 import FormClientView from './FormClientView'
 import FormReportRepairView from './FormReportRepairView'
-import FormDeviceView from './FormDeviceView'
 import FormRepairInfoView from './FormRepairInfoView'
 import FormComponentView from './FormComponentView'
 import FormComTurnoverView from './FormComTurnoverView'
@@ -40,7 +39,6 @@ const ListView = ({ listname, items, btns }) => {
             {listItems}
             <FormClientView />
             <FormReportRepairView />
-            <FormDeviceView />
             <FormRepairInfoView />
             <FormComponentView />
             <FormComTurnoverView />
