@@ -11,7 +11,7 @@ import {
 } from '../const/dashboard'
 
 const getItemsProps = (state) => {
-  return state.dashboardData[state.selectedDashboard]
+  return state.dashboardByName[state.selectedDashboard]
 }
 
 const getBtnsProps = (state) => {

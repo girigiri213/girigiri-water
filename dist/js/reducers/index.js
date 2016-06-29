@@ -54,12 +54,7 @@ function role(state=ROLE_SUPERUSER, action) {
   return state
 }
 
-function dashboardByName(state={}, action) {
-  return state
-}
-
-// TODO: Fake data
-function dashboardData(state={
+function dashboardByName(state={
   [DASHBOARD_CLIENT]: [
     {
       id: 1,
@@ -140,8 +135,7 @@ function dashboardData(state={
 const rootReducer = combineReducers({
   userInfo,
   dashboardByName,
-  selectedDashboard,
-  dashboardData
+  selectedDashboard
 })
 
 export default rootReducer
