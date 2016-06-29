@@ -1,26 +1,31 @@
 import React, { PropTypes } from 'react'
-import { ICON_DASHBOARD, ICON_TASK, ICON_WRENCH, ICON_USERS, ICON_GEAR, ICON_EXCHANGE } from './const'
 import { Link } from 'react-router'
 
-const NavItem = ({ href, btnType, text }) => {
+import {
+  DASHBOARD_CLIENT,
+  DASHBOARD_COM_STORE,
+  DASHBOARD_COM_TURNOVER,
+  DASHBOARD_REPAIR,
+  DASHBOARD_REPORT,
+  DASHBOARD_WELCOME
+} from '../const/dashboard'
+
+const NavItem = ({ href, dashboard, text, onClick }) => {
   let icon
-  switch (btnType) {
-    case ICON_DASHBOARD:
-      icon = (<i className="fa fa-dashboard fa-fw"></i>)
-      break
-    case ICON_TASK:
+  switch (dashboard) {
+    case DASHBOARD_REPORT:
       icon = (<i className="fa fa-tasks fa-fw"></i>)
       break
-    case ICON_WRENCH:
+    case DASHBOARD_REPAIR:
       icon = (<i className="fa fa-wrench fa-fw"></i>)
       break
-    case ICON_USERS:
+    case DASHBOARD_CLIENT:
       icon = (<i className="fa fa-users fa-fw"></i>)
       break
-    case ICON_GEAR:
+    case DASHBOARD_COM_STORE:
       icon = (<i className="fa fa-cog fa-fw"></i>)
       break
-    case ICON_EXCHANGE:
+    case DASHBOARD_COM_TURNOVER:
       icon = (<i className="fa fa-exchange fa-fw"></i>)
       break
     default:
@@ -28,7 +33,7 @@ const NavItem = ({ href, btnType, text }) => {
   }
   return (
     <li>
-      <Link to={href}>
+      <Link to={href} onClick={e => onClick(dashboard)}>
         {icon}
         {text}
       </Link>
@@ -40,7 +45,7 @@ NavItem.propTypes = {
   // the side button's reference link
   href: PropTypes.string.isRequired,
   // the icon style of the item
-  btnType: PropTypes.string.isRequired,
+  dashboard: PropTypes.string.isRequired,
   // the item's name
   text: PropTypes.string.isRequired
 }

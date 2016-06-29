@@ -2,15 +2,15 @@ import React, { PropTypes } from 'react'
 import NavSearch from './NavSearch'
 import NavItem from './NavItem'
 
-const NavSide = ({ navItems }) =>{
+const NavSide = ({ navItems, onNavItemClick }) =>{
   let items = []
-  // TODO: use state info
   navItems.forEach(item => {
     items.push(
       <NavItem
-        href={item.href} 
-        btnType={item.btnType} 
+        href={item.href}
+        dashboard={item.dashboard}
         text={item.text}
+        onClick={() => onNavItemClick(item.dashboard)}
       />
     )
   })
@@ -28,11 +28,12 @@ const NavSide = ({ navItems }) =>{
 }
 
 NavSide.propTypes = {
-  navItems : PropTypes.arrayOf(PropTypes.shape({
+  navItems: PropTypes.arrayOf(PropTypes.shape({
     href: PropTypes.string.isRequired,
-    btnType: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired
-  }).isRequired).isRequired
+    dashboard: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
+  onNavItemClick: PropTypes.func.isRequired
 }
 
 export default NavSide
