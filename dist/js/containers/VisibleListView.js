@@ -59,7 +59,8 @@ const mapStateToProps = (state) => {
   return {
     items: getItemsProps(state),
     btns: getBtnsProps(state),
-    listname: getListnameProps(state)
+    listname: getListnameProps(state),
+    dashboard: state.selectedDashboard
   }
 }
 

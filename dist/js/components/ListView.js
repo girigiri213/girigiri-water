@@ -6,7 +6,16 @@ import FormRepairInfoView from './FormRepairInfoView'
 import FormComponentView from './FormComponentView'
 import FormComTurnoverView from './FormComTurnoverView'
 
-const ListView = ({ listname, items, btns }) => {
+import {
+  DASHBOARD_CLIENT,
+  DASHBOARD_COM_STORE,
+  DASHBOARD_COM_TURNOVER,
+  DASHBOARD_REPAIR,
+  DASHBOARD_REPORT,
+  DASHBOARD_WELCOME
+} from '../const/dashboard'
+
+const ListView = ({ listname, items, btns, dashboard }) => {
   let listItems = []
   let buttons = []
   items.forEach(item => {
@@ -19,6 +28,24 @@ const ListView = ({ listname, items, btns }) => {
       />
     )
   })
+  switch (dashboard) {
+    case DASHBOARD_CLIENT:
+      listItems.push(<FormClientView />)
+      break
+    case DASHBOARD_REPORT:
+      listItems.push(<FormReportRepairView />)
+      break
+    case DASHBOARD_REPAIR:
+      listItems.push(<FormRepairInfoView />)
+      break
+    case DASHBOARD_COM_STORE:
+      listItems.push(<FormComponentView />)
+      break
+    case DASHBOARD_COM_TURNOVER:
+      listItems.push(<FormComTurnoverView />)
+      break
+    default:
+  }
   btns.forEach(button => {
     buttons.push(
       <button type="button" className="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target={button.href}>
@@ -37,11 +64,6 @@ const ListView = ({ listname, items, btns }) => {
         <div className="panel-body">
           <div className="list-group">
             {listItems}
-            <FormClientView />
-            <FormReportRepairView />
-            <FormRepairInfoView />
-            <FormComponentView />
-            <FormComTurnoverView />
           </div>
         </div>
       </div>
@@ -65,7 +87,9 @@ ListView.propTypes = {
   btns: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+
+  dashboard: PropTypes.string.isRequired
 }
 
 export default ListView

@@ -1,5 +1,6 @@
 import React from 'react'
-const LoginForm = ({ onSubmit }) => (
+
+const LoginForm = ({ onSubmit, onChange }) => (
   <div className="container">
     <div className="row">
         <div className="col-md-4 col-md-offset-4">

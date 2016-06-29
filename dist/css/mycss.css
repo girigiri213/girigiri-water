@@ -1,1 +1,4 @@
 body { padding-top: 70px; }
+.myhide { display: none; }
+.myshow { display: block; }
+.deleteConfirm { bottom: 5%; }
