@@ -10,7 +10,7 @@ const mapUsernameToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: logout
+    onClick: () => dispatch(logout())
   }
 }
 
