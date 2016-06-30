@@ -98,13 +98,13 @@ function dashboardByName(state={
   [DASHBOARD_CLIENT]: [
     {
       id: 1,
-      name: "王先生 电话：15111111111",
+      name: "王先生 家庭用户 电话：15111111111 洪山区华中科技大学",
       date: "2016/6/25",
       href: "#clientForm"
     },
     {
       id: 2,
-      name: "李女士 电话：13999999999",
+      name: "李女士 单位用户 电话：13999999999 武昌区武汉大学",
       date: "2016/6/25",
       href: "#clientForm"
     }
@@ -112,13 +112,13 @@ function dashboardByName(state={
   [DASHBOARD_REPORT]: [
     {
       id: 1,
-      name: "黑屏故障",
+      name: "黑屏故障 笔记本 间歇性故障",
       date: "2016/6/26",
       href: "#reportForm"
     },
     {
       id: 2,
-      name: "机器进水",
+      name: "机器进水 台式机 固定性故障",
       date: "2016/6/26",
       href: "#reportForm"
     }
@@ -126,13 +126,13 @@ function dashboardByName(state={
   [DASHBOARD_REPAIR]: [
     {
       id: 1,
-      name: "黑屏故障",
+      name: "黑屏故障 笔记本 间歇性故障",
       date: "2016/6/26",
       href: "#repairForm"
     },
     {
       id: 2,
-      name: "机器进水",
+      name: "机器进水 台式机 固定性故障",
       date: "2016/6/26",
       href: "#repairForm"
     }
@@ -140,13 +140,13 @@ function dashboardByName(state={
   [DASHBOARD_COM_STORE]: [
     {
       id: 1,
-      name: "金士顿 DDR3 1600 4GB 内存",
+      name: "金士顿 DDR3 1600 4GB 内存 30件 正常",
       date: "2016/6/26",
       href: "#componentForm"
     },
     {
       id: 2,
-      name: "NVIDIA GTX1080 显卡",
+      name: "NVIDIA GTX1080 显卡 2件 警戒",
       date: "2016/6/26",
       href: "#componentForm"
     }
@@ -154,13 +154,13 @@ function dashboardByName(state={
   [DASHBOARD_COM_TURNOVER]: [
     {
       id: 1,
-      name: "NVIDIA GTX1080 显卡 流水明细",
+      name: "NVIDIA GTX1080 显卡 流水明细 出库 1件",
       date: "2016/6/26",
       href: "#comTurnoverForm"
     },
     {
       id: 2,
-      name: "金士顿 DDR3 1600 4GB 内存 流水明细",
+      name: "金士顿 DDR3 1600 4GB 内存 流水明细 入库 20件",
       date: "2016/6/26",
       href: "#comTurnoverForm"
     }

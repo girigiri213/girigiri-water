@@ -47,7 +47,7 @@ export function loginRequest(username, password) {
     }
     // TODO: fake login need to be removed after backend API is implemented.
     if (username === "sunpen" && password === "213") {
-      dispatch(loginSucceed(username, password, ROLE_ENGINEER))
+      dispatch(loginSucceed(username, password, ROLE_SUPERUSER))
     }
     else if (username === "ladrift" && password === "hellodad") {
       dispatch(loginSucceed(username, password, ROLE_CUSTOMER_SERVICE))
