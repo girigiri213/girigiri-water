@@ -1,11 +1,12 @@
 import React from 'react'
 
-const ListItem = ({id, href, name, date}) => (
+const ListItem = ({id, href, text, date}) => (
   <a href={href} className="list-group-item" data-toggle="modal" >
     <i className="fa fa-wpforms fa-fw"></i>
-    <b>{id}</b>
+    <b>{"编号："}</b>
+    {id}
     {" "}
-    {name}
+    {text}
     <span className="pull-right text-muted samll"><em>{date}</em></span>
   </a>
 )
