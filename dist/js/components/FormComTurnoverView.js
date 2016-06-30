@@ -42,7 +42,7 @@ const FormComTurnoverView = () => (
           <div className="modal-footer">
             <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">Delete</button>
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" className="btn btn-primary">Save changes</button>
+            <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
           </div>
           </form>
         </div>
