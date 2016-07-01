@@ -22,27 +22,27 @@ import { selectDashBoard } from '../actions/dashboard'
 
 const mapDashboardToNavItem = {
   [DASHBOARD_CLIENT]: {
-    href: "dashboard/customer",
+    href: "/dashboard/customer",
     dashboard: DASHBOARD_CLIENT,
     text: "客户信息管理"
   },
   [DASHBOARD_REPAIR]: {
-  	href: "dashboard/repair",
+  	href: "/dashboard/repair",
     dashboard: DASHBOARD_REPAIR,
     text: "维修信息管理"
   },
   [DASHBOARD_REPORT]: {
-  	href: "dashboard/report",
+  	href: "/dashboard/report",
     dashboard: DASHBOARD_REPORT,
     text: "报修信息管理"
   },
   [DASHBOARD_COM_STORE]: {
-    href: "dashboard/component-store",
+    href: "/dashboard/component-store",
     dashboard: DASHBOARD_COM_STORE,
     text: "备件管理"
   },
   [DASHBOARD_COM_TURNOVER]: {
-    href: "dashboard/component-turnover",
+    href: "/dashboard/component-turnover",
     dashboard: DASHBOARD_COM_TURNOVER,
     text: "备件流水管理"
   }
