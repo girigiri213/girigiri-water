@@ -52,6 +52,12 @@ export function loginRequest(username, password) {
     else if (username === "ladrift" && password === "hellodad") {
       dispatch(loginSucceed(username, password, ROLE_CUSTOMER_SERVICE))
     }
+    else if (username === "jiannanshen" && password === "heihei") {
+      dispatch(loginSucceed(username, password, ROLE_REPO_MANAGER))
+    }
+    else if (username === "jiangyou" && password === "123") {
+      dispatch(loginSucceed(username, password, ROLE_TASK_SCHEDULER))
+    }
     else {
       return fetch(`/api/login`, {
         method: "POST",

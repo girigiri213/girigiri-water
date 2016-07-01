@@ -97,72 +97,178 @@ function role(state=ROLE_SUPERUSER, action) {
 function dashboardByName(state={
   [DASHBOARD_CLIENT]: [
     {
-      id: 1,
-      name: "王先生 家庭用户 电话：15111111111 洪山区华中科技大学",
-      date: "2016/6/25",
-      href: "#clientForm"
+      "created" : 1466928449000,
+      "updated" : 1466928449000,
+      "userId" : "420104199601021617",
+      "type" : 1,
+      "companyName" : null,
+      "phone" : null,
+      "mobile" : "13018060139",
+      "address" : "my address",
+      "zip" : null,
+      "contactName" : "my contactName",
+      "email" : null,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/1"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/1"
+        }
+      }
     },
     {
-      id: 2,
-      name: "李女士 单位用户 电话：13999999999 武昌区武汉大学",
-      date: "2016/6/25",
-      href: "#clientForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "userId" : "my userId",
+      "type" : 1,
+      "companyName" : null,
+      "phone" : null,
+      "mobile" : "11111111",
+      "address" : "my address",
+      "zip" : null,
+      "contactName" : "Bilbo",
+      "email" : null,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/6"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/6"
+        }
+      }
     }
   ],
   [DASHBOARD_REPORT]: [
     {
-      id: 1,
-      name: "黑屏故障 笔记本 间歇性故障",
-      date: "2016/6/26",
-      href: "#reportForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "error" : "黑屏故障",
+      "type" : 1,
+      "errorType" : 2,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/1"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/1"
+        }
+      }
     },
     {
-      id: 2,
-      name: "机器进水 台式机 固定性故障",
-      date: "2016/6/26",
-      href: "#reportForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "error" : "机器进水",
+      "type" : 1,
+      "errorType" : 1,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        }
+      }
     }
   ],
   [DASHBOARD_REPAIR]: [
     {
-      id: 1,
-      name: "黑屏故障 笔记本 间歇性故障",
-      date: "2016/6/26",
-      href: "#repairForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "repairState" : 1,
+      "reportID" : 1,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        }
+      }
     },
     {
-      id: 2,
-      name: "机器进水 台式机 固定性故障",
-      date: "2016/6/26",
-      href: "#repairForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "repairState" : 2,
+      "reportID" : 2,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        }
+      }
     }
   ],
   [DASHBOARD_COM_STORE]: [
     {
-      id: 1,
-      name: "金士顿 DDR3 1600 4GB 内存 30件 正常",
-      date: "2016/6/26",
-      href: "#componentForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "name" : "金士顿内存",
+      "serial" : "DDR3 1333 8GB",
+      "price" : 100,
+      "size" : 34,
+      "warningSize" : 10,
+      "state" : 1,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        }
+      }
     },
     {
-      id: 2,
-      name: "NVIDIA GTX1080 显卡 2件 警戒",
-      date: "2016/6/26",
-      href: "#componentForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "name" : "NVIDIA显卡",
+      "serial" : null,
+      "price" : 3999,
+      "size" : 4,
+      "warningSize" : 5,
+      "state" : 3,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        }
+      }
     }
   ],
   [DASHBOARD_COM_TURNOVER]: [
     {
-      id: 1,
-      name: "NVIDIA GTX1080 显卡 流水明细 出库 1件",
-      date: "2016/6/26",
-      href: "#comTurnoverForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "name" : "金士顿内存",
+      "serial" : "DDR3 1333 8GB",
+      "size" : 2,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/1"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/1"
+        }
+      }
     },
     {
-      id: 2,
-      name: "金士顿 DDR3 1600 4GB 内存 流水明细 入库 20件",
-      date: "2016/6/26",
-      href: "#comTurnoverForm"
+      "created" : 1466930018001,
+      "updated" : 1466930018001,
+      "name" : "NVIDIA显卡",
+      "serial" : null,
+      "size" : 1,
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        },
+        "customer" : {
+          "href" : "http://localhost:8080/api/customers/2"
+        }
+      }
     }
   ],
   [DASHBOARD_WELCOME]: [
