@@ -5,6 +5,7 @@ import FormReportRepairView from './FormReportRepairView'
 import FormRepairInfoView from './FormRepairInfoView'
 import FormComponentView from './FormComponentView'
 import FormComTurnoverView from './FormComTurnoverView'
+import VisibleSearchField from '../containers/VisibleSearchField'
 
 import {
   DASHBOARD_CLIENT,
@@ -218,51 +219,20 @@ const ListView = ({ listname, items, btns, dashboard }) => {
 
   return (
     <div>
-    <div className="row">
-      <form className="inline">
-      <div className="form-group col-lg-2 col-sm-2">
-        <select className="form-control" id="search" >
-          <option>编号</option>
-          <option>名称</option>
-          <option>类型</option>
-        </select>
-      </div>
-      <div className="form-group col-lg-4 col-sm-4">
-        <input type="text" className="form-control" id="searchText" placeholder="Search..." />
-      </div>
-      </form>
-      </div>
-
+      <VisibleSearchField />
       <div className="row">
-      <form>
-      <div className="form-group col-lg-2 col-sm-2">
-        <select className="form-control" id="search" >
-          <option>编号</option>
-          <option>名称</option>
-          <option>类型</option>
-        </select>
-      </div>
-      <div className="form-group col-lg-4 col-sm-4">
-        <input type="text" className="form-control" id="searchText" placeholder="Search..." />
-      </div>
-      <div className="form-group">
-        <button type="button" className="btn btn-primary btn-sm">搜索</button>
-      </div>
-      </form>
-    </div>
-    <div className="row">
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          {listname}
-          {buttons}
-        </div>
-        <div className="panel-body">
-          <div className="list-group">
-            {listItems}
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            {listname}
+            {buttons}
+          </div>
+          <div className="panel-body">
+            <div className="list-group">
+              {listItems}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }
