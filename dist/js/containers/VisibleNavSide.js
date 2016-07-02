@@ -18,7 +18,10 @@ import {
   ROLE_SUPERUSER
 } from '../const/role'
 
-import { selectDashBoard } from '../actions/dashboard'
+import {
+  selectDashBoard,
+  fetchListIfNeeded
+} from '../actions/dashboard'
 
 const mapDashboardToNavItem = {
   [DASHBOARD_CLIENT]: {
@@ -83,6 +86,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onNavItemClick: (dashboard) => {
       dispatch(selectDashBoard(dashboard))
+      dispatch(fetchListIfNeeded(dashboard))
     }
   }
 }

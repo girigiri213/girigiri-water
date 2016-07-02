@@ -17,7 +17,7 @@ import {
 } from '../const/dashboard'
 
 const getItemID = (item) => {
-  let url = item["_links"]["self"]["href"].split('/')
+  let url = item["_links"]["href"].split('/')
   return url[url.length - 1]
 }
 
@@ -91,7 +91,7 @@ const ListView = ({ listname, items, btns, dashboard }) => {
             deviceType = "其他"
             break
         }
-        switch (item["errorType"]) {
+        switch (item.device.errorType) {
           case 1:
             errorType = "固定性故障"
             break
@@ -105,7 +105,7 @@ const ListView = ({ listname, items, btns, dashboard }) => {
             href={"#reportForm"}
             text={[
               <b>故障现象：</b>,
-              item["error"] + " ",
+              item.device.error + " ",
               <b>产品类型：</b>,
               deviceType + " ",
               <b>故障类型：</b>,

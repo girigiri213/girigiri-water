@@ -7,186 +7,41 @@ import {
   DASHBOARD_WELCOME
 } from '../const/dashboard'
 
-export default function dashboardByName(state={
-  [DASHBOARD_CLIENT]: [
-    {
-      "created" : 1466928449000,
-      "updated" : 1466928449000,
-      "userId" : "420104199601021617",
-      "type" : 1,
-      "companyName" : null,
-      "phone" : null,
-      "mobile" : "13018060139",
-      "address" : "my address",
-      "zip" : null,
-      "contactName" : "my contactName",
-      "email" : null,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/1"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/1"
-        }
-      }
-    },
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "userId" : "my userId",
-      "type" : 1,
-      "companyName" : null,
-      "phone" : null,
-      "mobile" : "11111111",
-      "address" : "my address",
-      "zip" : null,
-      "contactName" : "Bilbo",
-      "email" : null,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/6"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/6"
-        }
-      }
-    }
-  ],
-  [DASHBOARD_REPORT]: [
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "error" : "黑屏故障",
-      "type" : 1,
-      "errorType" : 2,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/1"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/1"
-        }
-      }
-    },
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "error" : "机器进水",
-      "type" : 1,
-      "errorType" : 1,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        }
-      }
-    }
-  ],
-  [DASHBOARD_REPAIR]: [
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "repairState" : 1,
-      "reportID" : 1,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        }
-      }
-    },
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "repairState" : 2,
-      "reportID" : 2,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        }
-      }
-    }
-  ],
-  [DASHBOARD_COM_STORE]: [
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "name" : "金士顿内存",
-      "serial" : "DDR3 1333 8GB",
-      "price" : 100,
-      "size" : 34,
-      "warningSize" : 10,
-      "state" : 1,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        }
-      }
-    },
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "name" : "NVIDIA显卡",
-      "serial" : null,
-      "price" : 3999,
-      "size" : 4,
-      "warningSize" : 5,
-      "state" : 3,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        }
-      }
-    }
-  ],
-  [DASHBOARD_COM_TURNOVER]: [
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "name" : "金士顿内存",
-      "serial" : "DDR3 1333 8GB",
-      "size" : 2,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/1"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/1"
-        }
-      }
-    },
-    {
-      "created" : 1466930018001,
-      "updated" : 1466930018001,
-      "name" : "NVIDIA显卡",
-      "serial" : null,
-      "size" : 1,
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        },
-        "customer" : {
-          "href" : "http://localhost:8080/api/customers/2"
-        }
-      }
-    }
-  ],
-  [DASHBOARD_WELCOME]: [
+import {
+  REQUEST_LIST,
+  RECEIVE_LIST,
+  SELECT_DASHBOARD
+} from '../actions/dashboard'
 
-  ]
-}, action) {
-  return state
+export default function dashboardByName(state={}, action) {
+  return Object.assign({}, state, {
+    [action.dashboard]: dashboardList(state[action.dashboard], action)
+  })
+}
+
+function dashboardList(state={}, action) {
+  return {
+    items: items(state.items, action),
+    isFetching: isFetching(state.isFetching, action)
+  }
+}
+
+function items(state=[], action) {
+  switch (action.type) {
+    case RECEIVE_LIST:
+      return action.items
+    default:
+      return state
+  }
+}
+
+function isFetching(state=false, action) {
+  switch (action.type) {
+    case REQUEST_LIST:
+      return true
+    case RECEIVE_LIST:
+      return false
+    default:
+      return state
+  }
 }
