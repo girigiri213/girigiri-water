@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import ListView from '../components/ListView'
+import { selectListItem } from '../actions/dashboard'
 
 import {
   DASHBOARD_CLIENT,
@@ -64,8 +65,17 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick: (id) => {
+      dispatch(selectListItem(id))
+    }
+  }
+}
+
 const VisibleListView = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ListView)
 
 export default VisibleListView

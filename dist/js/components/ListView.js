@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import ListItem from './ListItem'
-import FormClientView from './FormClientView'
+import { VisibleFormClient } from '../containers/VisibleFormView'
 import FormReportRepairView from './FormReportRepairView'
 import FormRepairInfoView from './FormRepairInfoView'
 import FormComponentView from './FormComponentView'
@@ -16,7 +16,7 @@ import {
   DASHBOARD_WELCOME
 } from '../const/dashboard'
 
-const getItemID = (item) => {
+export const getItemID = (item) => {
   let url = item["_links"]["self"]["href"].split('/')
   return url[url.length - 1]
 }
@@ -26,10 +26,10 @@ const getDate = (item) => {
   let year = date.getYear() + 1900
   let month = date.getMonth() + 1
   let day = date.getDate()
-  return year + "/" + month + "/" + day
+  return year + "-" + month + "-" + day
 }
 
-const ListView = ({ listname, items, btns, dashboard }) => {
+const ListView = ({ listname, items, btns, dashboard, onClick }) => {
   let listItems = []
   let buttons = []
 
@@ -66,10 +66,11 @@ const ListView = ({ listname, items, btns, dashboard }) => {
               type
             ]}
             date={getDate(item)}
+            onItemClick={onClick}
           />
         )
       })
-      listItems.push(<FormClientView />)
+      listItems.push(<VisibleFormClient />)
       break
     case DASHBOARD_REPORT:
       items.forEach(item=>{
@@ -112,6 +113,7 @@ const ListView = ({ listname, items, btns, dashboard }) => {
               errorType
             ]}
             date={getDate(item)}
+            onItemClick={onClick}
           />
         )
       })
@@ -143,6 +145,7 @@ const ListView = ({ listname, items, btns, dashboard }) => {
               repairState
             ]}
             date={getDate(item)}
+            onItemClick={onClick}
           />
         )
       })
@@ -181,6 +184,8 @@ const ListView = ({ listname, items, btns, dashboard }) => {
             <b>库存状态：</b>,
             storeState
           ]}
+          date={getDate(item)}
+          onItemClick={onClick}
           />
         )
       })
@@ -202,6 +207,8 @@ const ListView = ({ listname, items, btns, dashboard }) => {
               <b>数量: </b>,
               item["size"]
             ]}
+            date={getDate(item)}
+            onItemClick={onClick}
           />
         )
       })
@@ -211,7 +218,7 @@ const ListView = ({ listname, items, btns, dashboard }) => {
   }
   btns.forEach(button => {
     buttons.push(
-      <button type="button" className="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target={button.href}>
+      <button type="button" className="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target={button.href} onClick={() => onClick(0)}>
         {button.text}
       </button>
     )
@@ -255,7 +262,8 @@ ListView.propTypes = {
     href: PropTypes.string.isRequired
   }).isRequired).isRequired,
 
-  dashboard: PropTypes.string.isRequired
+  dashboard: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 
 export default ListView
