@@ -17,7 +17,7 @@ class LoginForm extends Component {
             <div className="col-md-4 col-md-offset-4">
                 <div className="login-panel panel panel-default">
                     <div className="panel-heading">
-                        <h3 className="panel-title">Please Sign In</h3>
+                        <h3 className="panel-title">请登录</h3>
                     </div>
                     <div className="panel-body">
                         <form role="form">
@@ -28,12 +28,7 @@ class LoginForm extends Component {
                                 <div className="form-group">
                                     <input className="form-control" ref={(ref) => this.passwordInput = ref} placeholder="Password" name="password" type="password" />
                                 </div>
-                                <div className="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me" />Remember Me
-                                    </label>
-                                </div>
-                                <Link to="/dashboard" className="btn btn-lg btn-success btn-block" onClick={(e) => this.handleSubmit(e)}>Login</Link>
+                                <Link to="/dashboard" className="btn btn-lg btn-success btn-block" onClick={(e) => this.handleSubmit(e)}>登录</Link>
                             </fieldset>
                         </form>
                     </div>
