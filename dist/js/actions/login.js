@@ -8,6 +8,8 @@ import {
   ROLE_SUPERUSER
 } from '../const/role'
 
+import { hashHistory } from 'react-router'
+
 export const LOGIN_SUBMITTED = 'LOGIN_SUBMITTED'
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCEED = 'LOGIN_SUCCEED'
@@ -42,8 +44,8 @@ export function loginRequest(username, password) {
   return (dispatch) => {
     dispatch(loginSubmitted(username, password))
     let data = {
-      username,
-      password
+      name: username,
+      password: password
     }
     // TODO: fake login need to be removed after backend API is implemented.
     if (username === "sunpen" && password === "213") {
@@ -68,11 +70,13 @@ export function loginRequest(username, password) {
       })
       .then(response => response.json())
       .then(json => {
-        if (json.succeed) {
-          dispatch(loginSucceed(username, password, json.role))
-        } else {
-          dispatch(loginFailed())
-        }
+        console.log("LOGIN_SUCCEED:", json)
+        dispatch(loginSucceed(username, password, json.roles[0]))
+        hashHistory.push('/dashboard')
+      })
+      .catch(err => {
+        console.log("LOGIN_LOG", err)
+        dispatch(loginFailed())
       })
     }
   }

@@ -28,7 +28,7 @@ class LoginForm extends Component {
                                 <div className="form-group">
                                     <input className="form-control" ref={(ref) => this.passwordInput = ref} placeholder="Password" name="password" type="password" />
                                 </div>
-                                <Link to="/dashboard" className="btn btn-lg btn-success btn-block" onClick={(e) => this.handleSubmit(e)}>登录</Link>
+                                <a href="#" className="btn btn-lg btn-success btn-block" onClick={(e) => this.handleSubmit(e)}>登录</a>
                             </fieldset>
                         </form>
                     </div>
