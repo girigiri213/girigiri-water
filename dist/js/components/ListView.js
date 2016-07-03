@@ -1,6 +1,12 @@
 import React, { PropTypes } from 'react'
 import ListItem from './ListItem'
-import { VisibleFormClient } from '../containers/VisibleFormView'
+import {
+  VisibleFormClient,
+  VisibleFormComponent,
+  VisibleFormComTurnOver,
+  VisibleFormRepairInfo,
+  VisibleFormReportRepair
+ } from '../containers/VisibleFormView'
 import FormReportRepairView from './FormReportRepairView'
 import FormRepairInfoView from './FormRepairInfoView'
 import FormComponentView from './FormComponentView'
@@ -17,7 +23,14 @@ import {
 } from '../const/dashboard'
 
 export const getItemID = (item) => {
-  let url = item["_links"]["href"].split('/')
+  let url
+  if (item._links.self !== undefined) {
+    url = item._links.self.href.split('/')
+  }
+  else {
+    url = item._links.href.split('/')
+  }
+  // let url = item["_links"]["href"].split('/')
   return url[url.length - 1]
 }
 
@@ -75,7 +88,7 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
     case DASHBOARD_REPORT:
       items.forEach(item=>{
         let deviceType, errorType
-        switch (item["type"]) {
+        switch (item.device.type) {
           case 1:
             deviceType = "台式机"
             break
@@ -117,7 +130,7 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
           />
         )
       })
-      listItems.push(<FormReportRepairView />)
+      listItems.push(<VisibleFormReportRepair />)
       break
     case DASHBOARD_REPAIR:
       items.forEach(item => {
@@ -149,7 +162,7 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
           />
         )
       })
-      listItems.push(<FormRepairInfoView />)
+      listItems.push(<VisibleFormRepairInfo />)
       break
     case DASHBOARD_COM_STORE:
       items.forEach(item => {
@@ -178,7 +191,7 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
           href={"#componentForm"}
           text={[
             <b>备件名称：</b>,
-            item["name"] + serial + " ",
+            item["name"] + " " + serial + " ",
             <b>数量：</b>,
             item["size"] + " ",
             <b>库存状态：</b>,
@@ -189,7 +202,7 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
           />
         )
       })
-      listItems.push(<FormComponentView />)
+      listItems.push(<VisibleFormComponent />)
       break
     case DASHBOARD_COM_TURNOVER:
       items.forEach(item => {
@@ -203,7 +216,7 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
             href={"#comTurnoverForm"}
             text={[
               <b>备件名称：</b>,
-              item["name"] + serial + " ",
+              item["name"] + " " + serial + " ",
               <b>数量: </b>,
               item["size"]
             ]}
@@ -212,13 +225,19 @@ const ListView = ({ listname, items, btns, dashboard, onClick }) => {
           />
         )
       })
-      listItems.push(<FormComTurnoverView />)
+      listItems.push(<VisibleFormComTurnOver />)
       break
     default:
   }
   btns.forEach(button => {
     buttons.push(
-      <button type="button" className="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target={button.href} onClick={() => onClick(0)}>
+      <button
+        type="button"
+        className="btn btn-primary btn-sm pull-right"
+        data-toggle="modal"
+        data-target={button.href}
+        onClick={() => onClick(0)}
+      >
         {button.text}
       </button>
     )

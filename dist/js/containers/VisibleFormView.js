@@ -25,3 +25,19 @@ const mapStateToProps = (state) => {
 export const VisibleFormClient = connect(
   mapStateToProps
 )(FormClientView)
+
+export const VisibleFormComponent = connect(
+  mapStateToProps
+)(FormComponentView)
+
+export const VisibleFormComTurnOver = connect(
+  mapStateToProps
+)(FormComTurnoverView)
+
+export const VisibleFormRepairInfo = connect(
+  mapStateToProps
+)(FormRepairInfoView)
+
+export const VisibleFormReportRepair = connect(
+  mapStateToProps
+)(FormReportRepairView)

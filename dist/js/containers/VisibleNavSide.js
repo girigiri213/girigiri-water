@@ -20,6 +20,7 @@ import {
 
 import {
   selectDashBoard,
+  selectListItem,
   fetchListIfNeeded
 } from '../actions/dashboard'
 
@@ -87,6 +88,7 @@ const mapDispatchToProps = (dispatch) => {
     onNavItemClick: (dashboard) => {
       dispatch(selectDashBoard(dashboard))
       dispatch(fetchListIfNeeded(dashboard))
+      dispatch(selectListItem(0))
     }
   }
 }

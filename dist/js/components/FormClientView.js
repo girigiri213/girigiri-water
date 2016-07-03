@@ -9,9 +9,7 @@ class FormClientView extends Component {
 
 
   setValue() {
-    console.log(this.props.data)
     if (this.props.data !== null ) {
-      console.log(this.props.data.userId)
       this.refs.IDcard.value = this.props.data.userId
       this.refs.deliverDeviceDate.valueAsDate = new Date(this.props.data.created)
       this.refs.clientKind.value = this.props.data.type
@@ -22,6 +20,18 @@ class FormClientView extends Component {
       this.refs.zipCode.value = this.props.data.zip
       this.refs.contacts.value = this.props.data.contactName
       this.refs.email.value = this.props.data.email
+    }
+    else {
+      this.refs.IDcard.value = null
+      this.refs.deliverDeviceDate.valueAsDate = null
+      this.refs.clientKind.value = null
+      this.refs.companyName.value = null
+      this.refs.telephone.value = null
+      this.refs.mobilephone.value = null
+      this.refs.address.value = null
+      this.refs.zipCode.value = null
+      this.refs.contacts.value = null
+      this.refs.email.value = null
     }
   }
 
