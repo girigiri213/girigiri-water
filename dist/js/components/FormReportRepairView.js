@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DeleteConfirm from './DeleteConfirm'
 import { getItemID } from './ListView'
+import { DASHBOARD_REPORT } from '../const/dashboard'
 
 class FormReportRepairView extends Component {
   constructor(props, context) {
@@ -64,6 +65,46 @@ class FormReportRepairView extends Component {
       this.refs.battery.value = null
       this.refs.cdrom.value = null
       this.refs.otherInfo.value = null
+    }
+  }
+
+  handleSubmit() {
+    let data = {
+      predictPrice: this.refs.estimatedPrice.value,
+      predictTime: this.refs.finishDate.value,
+      state: this.refs.reportState.value,
+      cusId: this.refs.reportClient.value,
+      device: {
+        type: this.refs.deviceType.value,
+        brand: this.refs.deviceBrand.value,
+        number: this.refs.deviceModel.value,
+        serial: this.refs.serialNumber.value,
+        components: this.refs.missingParts.value,
+        error: this.refs.symptom.value,
+        errorType: this.refs.faultType.value,
+        appearence: this.refs.appearenceCheck.value,
+        pwd: this.refs.passwd.value,
+        data: this.refs.vitalInfo.value,
+        memory: this.refs.memory.value,
+        adapter: this.refs.acAdapter.value,
+        battery: this.refs.battery.value,
+        other: this.refs.otherInfo.value,
+        hdd: this.refs.hdd.value,
+        pcoutside: this.refs.pcCard.value,
+        cdoutside: this.refs.cdrom.value
+      }
+    }
+    Object.keys(data).map(function(key) {
+      if (data[key] === "") {
+        data[key] = null
+      }
+    })
+    console.log(data)
+    if (this.props.itemID === 0) {
+      this.props.onCreate(DASHBOARD_REPORT, data)
+    }
+    else {
+      this.props.onUpdate(DASHBOARD_REPORT, this.props.itemID, data)
     }
   }
 
@@ -199,13 +240,21 @@ class FormReportRepairView extends Component {
                 <a role="button" className="btn btn-warning pull-left" href={`/api/confirm/${this.props.itemID}`} download={`用户确认单-${this.props.itemID}`}>确认单</a>
                 <a role="button" className="btn btn-warning pull-left" href={`/api/checkout/${this.props.itemID}`} download={`维修结算单-${this.props.itemID}`}>结算单</a>
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" className="btn btn-primary" data-dismiss="modal">保存</button>
+                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
               </div>
               </form>
             </div>
           </div>
         </div>
-        <DeleteConfirm />
+        <DeleteConfirm
+          handleDelete={
+            (dashboard, id) => {
+              this.props.onDelete(dashboard, id)
+            }
+          }
+          itemID={this.props.itemID}
+          dashboard={DASHBOARD_REPORT}
+        />
       </div>
     )
   }
