@@ -1,41 +1,25 @@
 import { connect } from 'react-redux'
 import SearchField from '../components/SearchField'
-
-import {
-  DASHBOARD_CLIENT,
-  DASHBOARD_COM_STORE,
-  DASHBOARD_COM_TURNOVER,
-  DASHBOARD_REPAIR,
-  DASHBOARD_REPORT,
-  DASHBOARD_WELCOME
-} from '../const/dashboard'
+import { getFilteredData } from '../actions/search'
 
 const mapStateToProps = (state) => {
-  let items = []
-  switch (state.selectedDashboard) {
-    case DASHBOARD_CLIENT:
-      items = ["身份证编号", "　移动电话", "　　联系人"]
-      break
-    case DASHBOARD_REPORT:
-      items = ["报修编号", "客户编号"]
-      break
-    case DASHBOARD_REPAIR:
-      items = ["报修编号", "　工程师"]
-      break
-    case DASHBOARD_COM_STORE:
-      items = ["备件名称"]
-      break
-    case DASHBOARD_COM_TURNOVER:
-      items = ["备件名称"]
-    default:
-  }
   return {
-    items
+    dashboard: state.selectedDashboard
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submitSearch: (dashboard, params) => {
+      console.log("searchfield", dashboard, params)
+      dispatch(getFilteredData(dashboard, params))
+    }
   }
 }
 
 const VisibleSearchField = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(SearchField)
 
 export default VisibleSearchField

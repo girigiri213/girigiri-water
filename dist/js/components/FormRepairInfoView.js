@@ -14,11 +14,14 @@ class FormRepairInfoView extends Component {
       {
         this.refs.serviceStaff.remove(i);
       }
-      this.props.engineers.forEach(engineer => {
+      this.props.engineers.forEach((engineer, idx) => {
         let option = document.createElement("option")
         option.value = engineer.id
         option.text = engineer.name
         this.refs.serviceStaff.add(option)
+        if (engineer.id === this.props.data.managerId) {
+          this.refs.serviceStaff.selectedIndex = idx
+        }
       })
     }
     if (this.props.data !== null) {
@@ -165,7 +168,6 @@ class FormRepairInfoView extends Component {
                 </div>
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-danger pull-left" id="myDelete" data-toggle="modal" data-dismiss="modal" data-target="#deleteConfirm">删除</button>
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
                   <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
                 </div>

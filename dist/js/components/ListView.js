@@ -193,7 +193,9 @@ const ListView = ({ listname, items, btns, dashboard, onItemClick, refreshDashbo
           href={"#componentForm"}
           text={[
             <b>备件名称：</b>,
-            item["name"] + " " + serial + " ",
+            item["name"] + " ",
+            <b>型号：</b>,
+            serial + " ",
             <b>数量：</b>,
             item["size"] + " ",
             <b>库存状态：</b>,
@@ -218,7 +220,9 @@ const ListView = ({ listname, items, btns, dashboard, onItemClick, refreshDashbo
             href={"#comTurnoverForm"}
             text={[
               <b>备件名称：</b>,
-              item["name"] + " " + serial + " ",
+              item["name"] + " ",
+              <b>型号：</b>,
+              serial + " ",
               <b>数量: </b>,
               item["size"]
             ]}

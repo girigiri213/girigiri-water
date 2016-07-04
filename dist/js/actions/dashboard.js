@@ -32,14 +32,14 @@ export function selectListItem(id) {
   }
 }
 
-function requestList(dashboard) {
+export function requestList(dashboard) {
   return {
     type: REQUEST_LIST,
     dashboard
   }
 }
 
-function receiveList(dashboard, json) {
+export function receiveList(dashboard, json) {
   console.log("receiveList: ", json)
   return {
     type: RECEIVE_LIST,

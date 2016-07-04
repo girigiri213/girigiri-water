@@ -17,11 +17,15 @@ class FormReportRepairView extends Component {
       }
       console.log("before:", this.refs.reportClient.options)
       console.log(this.props.clients)
-      this.props.clients.forEach((client) => {
+      this.props.clients.forEach((client, idx) => {
         let option = document.createElement("option")
         option.value = getItemID(client)
         option.text = client.contactName + " 编号：" + getItemID(client)
         this.refs.reportClient.add(option)
+        console.log(option.value, this.props.data.cusId, idx)
+        if (option.value == this.props.data.cusId) {
+          this.refs.reportClient.selectedIndex = idx
+        }
       })
       console.log("after:", this.refs.reportClient.options)
     }
