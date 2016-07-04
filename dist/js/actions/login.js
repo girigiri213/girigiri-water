@@ -8,6 +8,42 @@ import {
   ROLE_SUPERUSER
 } from '../const/role'
 
+import {
+  DASHBOARD_CLIENT,
+  DASHBOARD_COM_STORE,
+  DASHBOARD_COM_TURNOVER,
+  DASHBOARD_REPAIR,
+  DASHBOARD_REPORT,
+  DASHBOARD_WELCOME
+} from '../const/dashboard'
+
+import { fetchListIfNeeded } from './dashboard'
+
+const mapRoleToDashboards = {
+  [ROLE_ENGINEER]: [
+    DASHBOARD_REPAIR,
+    DASHBOARD_COM_TURNOVER
+  ],
+  [ROLE_CUSTOMER_SERVICE]: [
+    DASHBOARD_CLIENT,
+    DASHBOARD_REPORT
+  ],
+  [ROLE_REPO_MANAGER]: [
+    DASHBOARD_COM_STORE,
+    DASHBOARD_COM_TURNOVER
+  ],
+  [ROLE_TASK_SCHEDULER]: [
+    DASHBOARD_REPAIR
+  ],
+  [ROLE_SUPERUSER]: [
+    DASHBOARD_CLIENT,
+    DASHBOARD_REPORT,
+    DASHBOARD_REPAIR,
+    DASHBOARD_COM_STORE,
+    DASHBOARD_COM_TURNOVER
+  ]
+}
+
 import { hashHistory } from 'react-router'
 
 export const LOGIN_SUBMITTED = 'LOGIN_SUBMITTED'
@@ -47,38 +83,27 @@ export function loginRequest(username, password) {
       name: username,
       password: password
     }
-    // TODO: fake login need to be removed after backend API is implemented.
-    if (username === "sunpen" && password === "213") {
-      dispatch(loginSucceed(username, password, ROLE_SUPERUSER))
-    }
-    else if (username === "ladrift" && password === "hellodad") {
-      dispatch(loginSucceed(username, password, ROLE_CUSTOMER_SERVICE))
-    }
-    else if (username === "jiannanshen" && password === "heihei") {
-      dispatch(loginSucceed(username, password, ROLE_REPO_MANAGER))
-    }
-    else if (username === "jiangyou" && password === "123") {
-      dispatch(loginSucceed(username, password, ROLE_TASK_SCHEDULER))
-    }
-    else {
-      return fetch(`/api/login`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
+
+    return fetch(`/api/login`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(json => {
+      console.log("LOGIN_SUCCEED:", json)
+      dispatch(loginSucceed(username, password, json.roles[0]))
+      mapRoleToDashboards[json.roles[0]].forEach(dashboard => {
+        dispatch(fetchListIfNeeded(dashboard))
       })
-      .then(response => response.json())
-      .then(json => {
-        console.log("LOGIN_SUCCEED:", json)
-        dispatch(loginSucceed(username, password, json.roles[0]))
-        hashHistory.push('/dashboard')
-      })
-      .catch(err => {
-        console.log("LOGIN_LOG", err)
-        dispatch(loginFailed())
-      })
-    }
+      hashHistory.push('/dashboard')
+    })
+    .catch(err => {
+      console.log("LOGIN_LOG", err)
+      dispatch(loginFailed())
+    })
   }
 }
 

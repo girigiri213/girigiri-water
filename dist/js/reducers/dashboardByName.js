@@ -35,7 +35,6 @@ function items(state=[], action) {
     case RECEIVE_LIST:
       return action.items
 
-    // TODO: add to items
     case FORM_POST_SUCCEED:
       return [
         ...state,

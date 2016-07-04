@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import ListView from '../components/ListView'
-import { selectListItem } from '../actions/dashboard'
+import { selectListItem, fetchListIfNeeded } from '../actions/dashboard'
 
 import {
   DASHBOARD_CLIENT,
@@ -67,8 +67,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (id) => {
+    onItemClick: (id) => {
       dispatch(selectListItem(id))
+    },
+    refreshDashboard: (dashboard) => {
+      dispatch(fetchListIfNeeded(dashboard))
     }
   }
 }

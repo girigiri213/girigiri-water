@@ -20,8 +20,6 @@ class FormReportRepairView extends Component {
     if (this.props.data !== null) {
       this.refs.reportID.value = getItemID(this.props.data)
 
-      // TODO: customer list
-
       this.refs.reportDate.valueAsDate = new Date(this.props.data.created)
       this.refs.estimatedPrice.value = this.props.data.predictPrice
       this.refs.finishDate.valueAsDate = this.props.data.predictTime
@@ -197,9 +195,11 @@ class FormReportRepairView extends Component {
               </div>
 
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">Delete</button>
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+                <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+                <a role="button" className="btn btn-warning pull-left" href={`/api/confirm/${this.props.itemID}`} download={`用户确认单-${this.props.itemID}`}>确认单</a>
+                <a role="button" className="btn btn-warning pull-left" href={`/api/checkout/${this.props.itemID}`} download={`维修结算单-${this.props.itemID}`}>结算单</a>
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" className="btn btn-primary" data-dismiss="modal">保存</button>
               </div>
               </form>
             </div>
