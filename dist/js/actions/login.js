@@ -18,6 +18,7 @@ import {
 } from '../const/dashboard'
 
 import { fetchListIfNeeded } from './dashboard'
+import { getEngineers } from './form'
 
 const mapRoleToDashboards = {
   [ROLE_ENGINEER]: [
@@ -98,6 +99,7 @@ export function loginRequest(username, password) {
       mapRoleToDashboards[json.roles[0]].forEach(dashboard => {
         dispatch(fetchListIfNeeded(dashboard))
       })
+      dispatch(getEngineers())
       hashHistory.push('/dashboard')
     })
     .catch(err => {

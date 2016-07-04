@@ -14,13 +14,13 @@ const DeleteConfirm = ({ handleDelete, itemID, dashboard }) => (
           <p>是否删除该条记录？</p>
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-success closeModal" data-dismiss="modal">Cancel</button>
+          <button type="button" className="btn btn-success closeModal" data-dismiss="modal">取消</button>
           <button type="button" className="btn btn-danger" data-dismiss="modal"
             onClick={e => {
               handleDelete(dashboard, itemID)
             }}
           >
-          Confirm
+          是
           </button>
         </div>
       </div>

@@ -11,12 +11,19 @@ class FormReportRepairView extends Component {
 
   setValue() {
     if (this.props.clients !== null) {
+      for(let i = this.refs.reportClient.options.length - 1 ; i >= 0 ; i--)
+      {
+        this.refs.reportClient.remove(i);
+      }
+      console.log("before:", this.refs.reportClient.options)
+      console.log(this.props.clients)
       this.props.clients.forEach((client) => {
         let option = document.createElement("option")
-        option.value = client.userId
+        option.value = getItemID(client)
         option.text = client.contactName + " 编号：" + getItemID(client)
         this.refs.reportClient.add(option)
       })
+      console.log("after:", this.refs.reportClient.options)
     }
     if (this.props.data !== null) {
       this.refs.reportID.value = getItemID(this.props.data)
@@ -236,7 +243,7 @@ class FormReportRepairView extends Component {
               </div>
 
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+                <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-dismiss="modal" data-target="#deleteConfirm">删除</button>
                 <a role="button" className="btn btn-warning pull-left" href={`/api/confirm/${this.props.itemID}`} download={`用户确认单-${this.props.itemID}`}>确认单</a>
                 <a role="button" className="btn btn-warning pull-left" href={`/api/checkout/${this.props.itemID}`} download={`维修结算单-${this.props.itemID}`}>结算单</a>
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>

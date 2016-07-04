@@ -10,13 +10,14 @@ class FormComTurnoverView extends Component {
 
   setValue() {
     if (this.props.data !== null) {
-      // this.refs.reportID.value = this.props.data.
+      this.refs.reportID.value = this.props.data.history
       this.refs.turnoverComName.value = this.props.data.name
       this.refs.turnoverComModel.value = this.props.data.serial
       this.refs.turnoverAmount.value = this.props.data.size
       this.refs.turnoverState.value = this.props.data.state
     }
     else {
+      this.refs.reportID.value = null
       this.refs.turnoverComName.value = null
       this.refs.turnoverComModel.value = null
       this.refs.turnoverAmount.value = null
@@ -29,7 +30,8 @@ class FormComTurnoverView extends Component {
       name: this.refs.turnoverComName.value,
       serial: this.refs.turnoverComModel.value,
       size: this.refs.turnoverAmount.value,
-      state: this.refs.turnoverState.value
+      state: this.refs.turnoverState.value,
+      history: this.refs.reportID.value
     }
     Object.keys(data).map(function(key) {
       if (data[key] === "") {
@@ -65,7 +67,7 @@ class FormComTurnoverView extends Component {
               <div className="modal-body">
                 <div className="form-group">
                   <label htmlFor="reportID">报修编号</label>
-                  <input type="text" className="form-control" id="reportID" placeholder="Enter report ID" ref="reportID"/>
+                  <input type="text" className="form-control" id="reportID" placeholder="Enter report ID" ref="reportID" required/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="turnoverComName">备件名称<span style={{color: "red"}}>{"*"}</span></label>
@@ -89,7 +91,7 @@ class FormComTurnoverView extends Component {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+                <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-dismiss="modal" data-target="#deleteConfirm">删除</button>
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
                 <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
               </div>

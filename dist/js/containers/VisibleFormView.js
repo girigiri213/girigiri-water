@@ -27,8 +27,7 @@ const getClientList = (state) => {
 }
 
 const getEngineerList = (state) => {
-  // TODO:
-  return [{name: "guojian"}]
+  return state.engineers
 }
 
 const mapStateToProps = (state) => {

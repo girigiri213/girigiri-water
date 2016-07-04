@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { fetchListIfNeeded } from '../actions/dashboard'
 import {
   DASHBOARD_CLIENT,
   DASHBOARD_COM_STORE,
@@ -11,6 +12,7 @@ import {
 import { mapDashboardToResource } from './dashboard'
 
 export const FORM_POST_SUCCEED = 'FORM_POST_SUCCEED'
+export const RECEIVE_ENGINEERS = 'RECEIVE_ENGINEERS'
 
 function formSubmittedSucceed(dashboard, data) {
   return {
@@ -45,9 +47,9 @@ export function deleteForm(dashboard, id) {
     return fetch(`/api/${mapDashboardToResource[dashboard]}/${id}`, {
       method: "DELETE"
     })
-    .then(response => response.json())
-    .then(json => {
-      console.log(json)
+    .then(response => {
+      console.log(response.status)
+      dispatch(fetchListIfNeeded(dashboard))
     })
     .catch(err => {
       console.log(err)
@@ -64,8 +66,30 @@ export function updateForm(dashboard, id, data) {
         "Content-Type": "application/json"
       }
     })
+    .then(response => {
+      console.log("update: ", response.status)
+      dispatch(fetchListIfNeeded(dashboard))
+    })
     .catch(err => {
       console.log(err)
+    })
+  }
+}
+
+function receiveEngineers(engineers) {
+  return {
+    type: RECEIVE_ENGINEERS,
+    engineers
+  }
+}
+
+export function getEngineers() {
+  return (dispatch) => {
+    return fetch(`/api/manager/engineer`)
+    .then(response => response.json())
+    .then(json => {
+      console.log(json)
+      dispatch(receiveEngineers(json))
     })
   }
 }

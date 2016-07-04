@@ -241,17 +241,19 @@ const ListView = ({ listname, items, btns, dashboard, onItemClick, refreshDashbo
         {"刷新"}
       </button>
     )
-    buttons.push(
-      <button
+    if (dashboard !== DASHBOARD_REPAIR) {
+      buttons.push(
+        <button
         type="button"
         className="btn btn-primary btn-sm pull-right"
         data-toggle="modal"
         data-target={button.href}
         onClick={() => onItemClick(0)}
-      >
+        >
         {button.text}
-      </button>
-    )
+        </button>
+      )
+    }
   })
 
   return (

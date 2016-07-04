@@ -33,7 +33,7 @@ const NavItem = ({ href, dashboard, text, onClick }) => {
   }
   return (
     <li>
-      <Link to={href} onClick={e => onClick(dashboard)}>
+      <Link className="my-nav-item"  to={href} onClick={e => onClick(dashboard)}>
         {icon}
         {text}
       </Link>

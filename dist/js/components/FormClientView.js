@@ -131,7 +131,7 @@ class FormClientView extends Component {
             </div>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+            <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-dismiss="modal" data-target="#deleteConfirm">删除</button>
             <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
             <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
           </div>

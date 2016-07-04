@@ -10,8 +10,13 @@ class FormRepairInfoView extends Component {
 
   setValue() {
     if (this.props.engineers !== null) {
+      for(let i = this.refs.serviceStaff.options.length - 1 ; i >= 0 ; i--)
+      {
+        this.refs.serviceStaff.remove(i);
+      }
       this.props.engineers.forEach(engineer => {
         let option = document.createElement("option")
+        option.value = engineer.id
         option.text = engineer.name
         this.refs.serviceStaff.add(option)
       })
@@ -51,7 +56,7 @@ class FormRepairInfoView extends Component {
       managerId: this.refs.serviceStaff.value,
       checkHistory: this.refs.checkInfo.value,
       repairHistories: this.refs.repairInfo.value,
-      repairTime: this.refs.repairDate.valueAsDate,
+      repairTime: this.refs.repairDate.valueAsDate.getTime(),
       workforce: this.refs.workload.value,
       manPrice: this.refs.laborCosts.value,
       materialPrice: this.refs.materialFee.value,
@@ -60,6 +65,7 @@ class FormRepairInfoView extends Component {
       repairState: this.refs.repairState.value,
       delayType: this.refs.delayState.value
     }
+    console.log(data.repairTime)
     Object.keys(data).map(function(key) {
       if (data[key] === "") {
         data[key] = null
@@ -158,7 +164,7 @@ class FormRepairInfoView extends Component {
                 </div>
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-danger pull-left" id="myDelete" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+                  <button type="button" className="btn btn-danger pull-left" id="myDelete" data-toggle="modal" data-dismiss="modal" data-target="#deleteConfirm">删除</button>
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
                   <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
                 </div>
