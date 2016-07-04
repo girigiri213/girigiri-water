@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DeleteConfirm from './DeleteConfirm'
+import { DASHBOARD_REPAIR } from '../const/dashboard'
 
 class FormRepairInfoView extends Component {
   constructor(props, context) {
@@ -42,6 +43,34 @@ class FormRepairInfoView extends Component {
       this.refs.noticeItems.value = null
       this.refs.repairState.value = null
       this.refs.delayState.value = null
+    }
+  }
+
+  handleSubmit() {
+    let data = {
+      managerId: this.refs.serviceStaff.value,
+      checkHistory: this.refs.checkInfo.value,
+      repairHistories: this.refs.repairInfo.value,
+      repairTime: this.refs.repairDate.valueAsDate,
+      workforce: this.refs.workload.value,
+      manPrice: this.refs.laborCosts.value,
+      materialPrice: this.refs.materialFee.value,
+      promise: this.refs.repairPromise.value,
+      warning: this.refs.noticeItems.value,
+      repairState: this.refs.repairState.value,
+      delayType: this.refs.delayState.value
+    }
+    Object.keys(data).map(function(key) {
+      if (data[key] === "") {
+        data[key] = null
+      }
+    })
+    console.log(data)
+    if (this.props.itemID === 0) {
+      this.props.onCreate(DASHBOARD_REPAIR)
+    }
+    else {
+      this.props.onUpdate(DASHBOARD_REPAIR, this.props.itemID, data)
     }
   }
 
@@ -129,15 +158,23 @@ class FormRepairInfoView extends Component {
                 </div>
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-danger pull-left" id="myDelete" data-toggle="modal" data-target="#deleteConfirm">Delete</button>
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+                  <button type="button" className="btn btn-danger pull-left" id="myDelete" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
+                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        <DeleteConfirm />
+        <DeleteConfirm
+          handleDelete={
+            (dashboard, id) => {
+              this.props.onDelete(dashboard, id)
+            }
+          }
+          itemID={this.props.itemID}
+          dashboard={DASHBOARD_REPAIR}
+        />
       </div>
     )
   }

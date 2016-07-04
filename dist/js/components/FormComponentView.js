@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DeleteConfirm from './DeleteConfirm'
+import { DASHBOARD_COM_STORE } from '../const/dashboard'
 
 class FormComponentView extends Component {
   constructor(props, context) {
@@ -26,11 +27,35 @@ class FormComponentView extends Component {
     }
   }
 
+  handleSubmit() {
+    let data = {
+      name: this.refs.comName.value,
+      serial: this.refs.comModel.value,
+      price: this.refs.unitPrice.value,
+      size: this.refs.amount.value,
+      warningSize: this.refs.alertAmount.value,
+      state: this.refs.storeState.value
+    }
+    Object.keys(data).map(function(key) {
+      if (data[key] === "") {
+        data[key] = null
+      }
+    })
+    console.log(data)
+    if (this.props.itemID === 0) {
+      this.props.onCreate(DASHBOARD_COM_STORE, data)
+    }
+    else {
+      this.props.onUpdate(DASHBOARD_COM_STORE, this.props.itemID, data)
+    }
+  }
+
   render() {
     if (this.isRender === true) {
       this.setValue()
     }
     this.isRender = true
+
     return (
     <div>
       <div className="modal fade" id="componentForm" tabIndex="-1" role="dialog" aria-labelledby="componentFormLabel" aria-hidden="true">
@@ -75,15 +100,23 @@ class FormComponentView extends Component {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">Delete</button>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+              <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">删除</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">关闭</button>
+              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>保存</button>
             </div>
             </form>
           </div>
         </div>
       </div>
-      <DeleteConfirm />
+      <DeleteConfirm
+        handleDelete={
+          (dashboard, id) => {
+            this.props.onDelete(dashboard, id)
+          }
+        }
+        itemID={this.props.itemID}
+        dashboard={DASHBOARD_COM_STORE}
+      />
     </div>
     )
   }
