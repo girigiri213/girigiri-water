@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DeleteConfirm from './DeleteConfirm'
+import { DASHBOARD_CLIENT } from '../const/dashboard'
 
 class FormClientView extends Component {
   constructor(props, context) {
@@ -32,6 +33,32 @@ class FormClientView extends Component {
       this.refs.zipCode.value = null
       this.refs.contacts.value = null
       this.refs.email.value = null
+    }
+  }
+
+  handleSubmit() {
+    let data = {
+      userId: this.refs.IDcard.value,
+      type: this.refs.clientKind.value,
+      companyName: this.refs.companyName.value,
+      phone: this.refs.telephone.value,
+      mobile: this.refs.mobilephone.value,
+      address: this.refs.address.value,
+      zip: this.refs.zipCode.value,
+      contactName: this.refs.contacts.value,
+      email: this.refs.email.value
+    }
+    Object.keys(data).map(function(key) {
+      if (data[key] === "") {
+        data[key] = null
+      }
+    })
+    console.log(data)
+    if (this.props.itemID === 0) {
+      this.props.onCreate(DASHBOARD_CLIENT, data)
+    }
+    else {
+      this.props.onUpdate(DASHBOARD_CLIENT, this.props.itemID, data)
     }
   }
 
@@ -106,13 +133,21 @@ class FormClientView extends Component {
           <div className="modal-footer">
             <button type="button" className="btn btn-danger pull-left" data-toggle="modal" data-target="#deleteConfirm">Delete</button>
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={(e) => this.handleSubmit(e)}>Save changes</button>
           </div>
           </form>
         </div>
       </div>
     </div>
-    <DeleteConfirm />
+    <DeleteConfirm
+      handleDelete={
+        (dashboard, id) => {
+          this.props.onDelete(dashboard, id)
+        }
+      }
+      itemID={this.props.itemID}
+      dashboard={DASHBOARD_CLIENT}
+    />
   </div>
     )
   }

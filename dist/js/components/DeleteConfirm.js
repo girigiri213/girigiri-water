@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeleteConfirm = () => (
+const DeleteConfirm = ({ handleDelete, itemID, dashboard }) => (
   <div className="modal fade" id="deleteConfirm">
     <div className="modal-dialog modal-sm">
       <div className="modal-content">
@@ -15,7 +15,13 @@ const DeleteConfirm = () => (
         </div>
         <div className="modal-footer">
           <button type="button" className="btn btn-success closeModal" data-dismiss="modal">Cancel</button>
-          <button type="button" className="btn btn-danger" data-dismiss="modal">Confirm</button>
+          <button type="button" className="btn btn-danger" data-dismiss="modal"
+            onClick={e => {
+              handleDelete(dashboard, itemID)
+            }}
+          >
+          Confirm
+          </button>
         </div>
       </div>
     </div>

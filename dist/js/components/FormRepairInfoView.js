@@ -8,16 +8,16 @@ class FormRepairInfoView extends Component {
   }
 
   setValue() {
+    if (this.props.engineers !== null) {
+      this.props.engineers.forEach(engineer => {
+        let option = document.createElement("option")
+        option.text = engineer.name
+        this.refs.serviceStaff.add(option)
+      })
+    }
     if (this.props.data !== null) {
       // this.refs.reportID.value = this.props.data.
 
-      // TODO: get engineer infomation from data
-      // for (let i = 0; i < manager.length; i++) {
-      //   let option = document.createElement("option")
-      //   option.value = (i + 1) + ""
-      //   option.text = manager[i].name
-      //   this.refs.serviceStaff.add(option)
-      // }
       this.refs.dispatchDate.valueAsDate = new Date(this.props.data.created)
       this.refs.checkInfo.value = this.props.data.checkHistory
       this.refs.repairInfo.value = this.props.data.repairHistory
@@ -71,10 +71,6 @@ class FormRepairInfoView extends Component {
                   <div className="form-group col-md-6">
                     <label htmlFor="serviceStaff">维修人员</label>
                     <select className="form-control" id="serviceStaff" ref="serviceStaff">
-                      <option value="1">工程师1号 当前2</option>
-                      <option value="2">工程师2号 当前0</option>
-                      <option value="3">工程师3号 当前4</option>
-                      <option value="4">工程师4号 当前3</option>
                     </select>
                   </div>
                   <div className="form-group col-md-6">

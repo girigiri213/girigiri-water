@@ -13,6 +13,10 @@ import {
   SELECT_DASHBOARD
 } from '../actions/dashboard'
 
+import {
+  FORM_POST_SUCCEED
+} from '../actions/form'
+
 export default function dashboardByName(state={}, action) {
   return Object.assign({}, state, {
     [action.dashboard]: dashboardList(state[action.dashboard], action)
@@ -30,6 +34,14 @@ function items(state=[], action) {
   switch (action.type) {
     case RECEIVE_LIST:
       return action.items
+
+    // TODO: add to items
+    case FORM_POST_SUCCEED:
+      return [
+        ...state,
+        action.data
+      ]
+
     default:
       return state
   }

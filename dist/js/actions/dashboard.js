@@ -49,7 +49,7 @@ function receiveList(dashboard, json) {
   }
 }
 
-const mapDashboardToResource = {
+export const mapDashboardToResource = {
   [DASHBOARD_REPAIR]: 'repairHistories',
   [DASHBOARD_COM_TURNOVER]: 'componentRequests',
   [DASHBOARD_CLIENT]: 'customers',

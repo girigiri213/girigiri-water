@@ -9,6 +9,14 @@ class FormReportRepairView extends Component {
   }
 
   setValue() {
+    if (this.props.clients !== null) {
+      this.props.clients.forEach((client) => {
+        let option = document.createElement("option")
+        option.value = client.userId
+        option.text = client.contactName + " 编号：" + getItemID(client)
+        this.refs.reportClient.add(option)
+      })
+    }
     if (this.props.data !== null) {
       this.refs.reportID.value = getItemID(this.props.data)
 
@@ -87,9 +95,6 @@ class FormReportRepairView extends Component {
                 <div className="form-group col-md-6">
                   <label htmlFor="reportClient">报修客户</label>
                   <select className="form-control" id="reportClient" ref="reportClient">
-                    <option>客户1 编号：001</option>
-                    <option>客户2 编号：002</option>
-                    <option>客户3 编号：003</option>
                   </select>
                 </div>
                 <div className="form-group col-md-6">
