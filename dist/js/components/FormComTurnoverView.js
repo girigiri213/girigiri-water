@@ -23,6 +23,10 @@ class FormComTurnoverView extends Component {
       this.refs.turnoverAmount.value = null
       this.refs.turnoverState.value = null
     }
+    // TODO: 
+    if (this.refs.reportID.value === 0) {
+      this.refs.reportID.value = "N/A"
+    }
   }
 
   handleSubmit() {
@@ -66,7 +70,7 @@ class FormComTurnoverView extends Component {
               <form>
               <div className="modal-body">
                 <div className="form-group">
-                  <label htmlFor="reportID">报修编号</label>
+                  <label htmlFor="reportID">维修编号</label>
                   <input type="text" className="form-control" id="reportID" placeholder="Enter report ID" ref="reportID" required/>
                 </div>
                 <div className="form-group">

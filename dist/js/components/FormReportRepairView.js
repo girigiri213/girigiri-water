@@ -30,7 +30,7 @@ class FormReportRepairView extends Component {
 
       this.refs.reportDate.valueAsDate = new Date(this.props.data.created)
       this.refs.estimatedPrice.value = this.props.data.predictPrice
-      this.refs.finishDate.valueAsDate = this.props.data.predictTime
+      this.refs.finishDate.value = this.props.data.predictTime
       this.refs.reportState.value = this.props.data.state
       this.refs.deviceType.value = this.props.data.device.type
       this.refs.deviceBrand.value = this.props.data.device.brand
@@ -39,7 +39,7 @@ class FormReportRepairView extends Component {
       this.refs.missingParts.value = this.props.data.device.components
       this.refs.symptom.value = this.props.data.device.error
       this.refs.faultType.value = this.props.data.device.errorType
-      this.refs.appearenceCheck.value = this.props.data.device.appearence
+      this.refs.appearanceCheck.value = this.props.data.device.appearance
       this.refs.passwd.value = this.props.data.device.pwd
       this.refs.vitalInfo.value = this.props.data.device.data
       this.refs.hdd.value = this.props.data.device.hdd
@@ -62,7 +62,7 @@ class FormReportRepairView extends Component {
       this.refs.missingParts.value = null
       this.refs.symptom.value = null
       this.refs.faultType.value = null
-      this.refs.appearenceCheck.value = null
+      this.refs.appearanceCheck.value = null
       this.refs.passwd.value = null
       this.refs.vitalInfo.value = null
       this.refs.hdd.value = null
@@ -89,7 +89,7 @@ class FormReportRepairView extends Component {
         components: this.refs.missingParts.value,
         error: this.refs.symptom.value,
         errorType: this.refs.faultType.value,
-        appearence: this.refs.appearenceCheck.value,
+        appearance: this.refs.appearanceCheck.value,
         pwd: this.refs.passwd.value,
         data: this.refs.vitalInfo.value,
         memory: this.refs.memory.value,
@@ -201,8 +201,8 @@ class FormReportRepairView extends Component {
                   </select>
                 </div>
                 <div className="form-group col-md-6">
-                  <label htmlFor="appearenceCheck">机器外观检查</label>
-                  <input type="text" className="form-control" id="appearenceCheck" placeholder="Enter appearence state" ref="appearenceCheck"/>
+                  <label htmlFor="appearanceCheck">机器外观检查</label>
+                  <input type="text" className="form-control" id="appearanceCheck" placeholder="Enter appearance state" ref="appearanceCheck"/>
                 </div>
                 <div className="form-group col-md-6">
                   <label htmlFor="passwd">开机口令</label>

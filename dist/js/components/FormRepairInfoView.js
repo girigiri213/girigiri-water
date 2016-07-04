@@ -24,7 +24,7 @@ class FormRepairInfoView extends Component {
     if (this.props.data !== null) {
       // this.refs.reportID.value = this.props.data.
 
-      this.refs.dispatchDate.valueAsDate = new Date(this.props.data.created)
+      this.refs.dispatchDate.valueAsDate = new Date(this.props.data.assignTime)
       this.refs.checkInfo.value = this.props.data.checkHistory
       this.refs.repairInfo.value = this.props.data.repairHistory
       this.refs.repairDate.valueAsDate = new Date(this.props.data.repairTime)
@@ -53,9 +53,10 @@ class FormRepairInfoView extends Component {
 
   handleSubmit() {
     let data = {
+      assignTime: this.refs.dispatchDate.valueAsDate.getTime(),
       managerId: this.refs.serviceStaff.value,
       checkHistory: this.refs.checkInfo.value,
-      repairHistories: this.refs.repairInfo.value,
+      repairHistory: this.refs.repairInfo.value,
       repairTime: this.refs.repairDate.valueAsDate.getTime(),
       workforce: this.refs.workload.value,
       manPrice: this.refs.laborCosts.value,
