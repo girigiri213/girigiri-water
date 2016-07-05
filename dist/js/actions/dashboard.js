@@ -41,6 +41,14 @@ export function requestList(dashboard) {
 
 export function receiveList(dashboard, json) {
   console.log("receiveList: ", json)
+  if (Object.keys(json).length === 0) {
+    return {
+      type: RECEIVE_LIST,
+      dashboard,
+      items: [],
+      receivedAt: Date.now()
+    }
+  }
   return {
     type: RECEIVE_LIST,
     dashboard,

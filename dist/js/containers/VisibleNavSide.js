@@ -87,7 +87,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onNavItemClick: (dashboard) => {
       dispatch(selectDashBoard(dashboard))
-      dispatch(selectListItem(0))
+      dispatch(selectListItem(-1))
     }
   }
 }

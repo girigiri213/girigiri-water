@@ -22,9 +22,11 @@ class FormReportRepairView extends Component {
         option.value = getItemID(client)
         option.text = client.contactName + " 编号：" + getItemID(client)
         this.refs.reportClient.add(option)
-        console.log(option.value, this.props.data.cusId, idx)
-        if (option.value == this.props.data.cusId) {
-          this.refs.reportClient.selectedIndex = idx
+        if (this.props.data !== null) {
+          console.log(option.value, this.props.data.cusId, idx)
+          if (option.value == this.props.data.cusId) {
+            this.refs.reportClient.selectedIndex = idx
+          }
         }
       })
       console.log("after:", this.refs.reportClient.options)
