@@ -66,6 +66,42 @@ class SearchField extends Component {
     }
     this.props.submitSearch(this.props.dashboard, params)
   }
+
+  componentDidMount() {
+    $('#form-search0').validate({
+      rules: {
+        userId: {
+          number: true
+        },
+        mobile: {
+          number: true
+        },
+        cusId: {
+          number: true
+        }
+      },
+      highlight: function (element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error')
+      },
+      success: function (element) {
+        element.closest('.form-group').removeClass('has-error').addClass('has-success')
+      }
+    })
+    $('#form-search1').validate({
+      rules: {
+        mobile: {
+          number: true
+        }
+      },
+      highlight: function (element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error')
+      },
+      success: function (element) {
+        element.closest('.form-group').removeClass('has-error').addClass('has-success')
+      }
+    })
+  }
+
   render() {
     let items = []
     switch (this.props.dashboard) {
@@ -87,12 +123,12 @@ class SearchField extends Component {
     console.log(this.props.dashboard)
     console.log(items)
     let shows = []
-    items.forEach(item => {
+    items.forEach((item, idx) => {
       shows.push(
-          <form className="form-inline">
+          <form className="form-inline" id={"form-search"+idx}>
             <div className="form-group">
-              <label htmlFor="searchText">{item.text + "："}</label>
-              <input type="text" className="form-control" ref={item.ref} id="searchText" placeholder="Search..." />
+              <label htmlFor={item.ref}>{item.text + "："}</label>
+              <input type="text" className="form-control" ref={item.ref} id={item.ref} name={item.ref} placeholder="Search..." />
             </div>
           </form>
       )

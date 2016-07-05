@@ -119,6 +119,23 @@ class FormReportRepairView extends Component {
     }
   }
 
+  componentDidMount() {
+    $('#form-report-repair').validate({
+      rules: {
+        symptom: {
+          minlength: 5,
+          required: true
+        }
+      },
+      highlight: function (element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error')
+      },
+      success: function (element) {
+        element.closest('.form-group').removeClass('has-error').addClass('has-success')
+      }
+    })
+  }
+
   render() {
     if (this.isRender === true) {
       this.setValue()
@@ -136,7 +153,7 @@ class FormReportRepairView extends Component {
                 </button>
                 <h4 className="modal-title" id="myModalLabel">报修信息</h4>
               </div>
-              <form>
+              <form id="form-report-repair">
               <div className="modal-body">
                 <div className="form-group col-md-6">
                   <label htmlFor="reportID">报修编号</label>
@@ -195,7 +212,7 @@ class FormReportRepairView extends Component {
                 </div>
                 <div className="form-group col-md-6">
                   <label htmlFor="symptom">故障现象<span style={{color: "red"}}>{"*"}</span></label>
-                  <input type="text" className="form-control" id="symptom" placeholder="Enter symptom" ref="symptom" required/>
+                  <input type="text" className="form-control" id="symptom" name="symptom" placeholder="Enter symptom" ref="symptom" required/>
                 </div>
                 <div className="form-group col-md-6">
                   <label htmlFor="faultType">故障类型<span style={{color: "red"}}>{"*"}</span></label>

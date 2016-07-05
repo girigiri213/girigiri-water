@@ -49,6 +49,35 @@ class FormComponentView extends Component {
     }
   }
 
+  componentDidMount() {
+    $('#form-component').validate({
+      rules: {
+        comName: {
+          minlength: 2,
+          required: true
+        },
+        unitPrice: {
+          range: [1, 99999],
+          required: true
+        },
+        amount: {
+          range: [0, 999],
+          required: true
+        },
+        alertAmount: {
+          range: [1, 999],
+          required: true
+        }
+      },
+      highlight: function (element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error')
+      },
+      success: function (element) {
+        element.closest('.form-group').removeClass('has-error').addClass('has-success')
+      }
+    })
+  }
+
   render() {
     if (this.isRender === true) {
       this.setValue()
@@ -66,11 +95,11 @@ class FormComponentView extends Component {
               </button>
               <h4 className="modal-title" id="myModalLabel">备件信息</h4>
             </div>
-            <form>
+            <form id="form-component">
             <div className="modal-body">
               <div className="form-group">
                 <label htmlFor="comName">备件名称<span style={{color: "red"}}>{"*"}</span></label>
-                <input type="text" className="form-control" id="comName" placeholder="Enter component's name" ref="comName" required/>
+                <input type="text" className="form-control" id="comName" name="comName" placeholder="Enter component's name" ref="comName" required/>
               </div>
               <div className="form-group">
                 <label htmlFor="comModel">型号</label>
@@ -78,15 +107,15 @@ class FormComponentView extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="unitPrice">单价<span style={{color: "red"}}>{"*"}</span></label>
-                <input type="text" className="form-control" id="unitPrice" placeholder="Enter component's unit price" ref="unitPrice" required/>
+                <input type="text" className="form-control" id="unitPrice" name="unitPrice" placeholder="Enter component's unit price" ref="unitPrice" required/>
               </div>
               <div className="form-group">
                 <label htmlFor="amount">数量<span style={{color: "red"}}>{"*"}</span></label>
-                <input type="number" className="form-control" id="amount" placeholder="Enter component's amount" ref="amount" required/>
+                <input type="number" className="form-control" id="amount" name="amount" placeholder="Enter component's amount" ref="amount" required/>
               </div>
               <div className="form-group">
                 <label htmlFor="alertAmount">警戒数量<span style={{color: "red"}}>{"*"}</span></label>
-                <input type="number" className="form-control" id="alertAmount" placeholder="Enter component's alert amount" ref="alertAmount" required/>
+                <input type="number" className="form-control" id="alertAmount" name="alertAmount" placeholder="Enter component's alert amount" ref="alertAmount" required/>
               </div>
               <div className="form-group">
                 <label htmlFor="storeState">库存状态</label>

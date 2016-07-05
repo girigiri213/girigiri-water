@@ -23,7 +23,7 @@ class FormComTurnoverView extends Component {
       this.refs.turnoverAmount.value = null
       this.refs.turnoverState.value = null
     }
-    // TODO: 
+    // TODO:
     if (this.refs.reportID.value === 0) {
       this.refs.reportID.value = "N/A"
     }
@@ -51,6 +51,27 @@ class FormComTurnoverView extends Component {
     }
   }
 
+  componentDidMount() {
+    $('#form-com-turnover').validate({
+      rules: {
+        turnoverComName: {
+          minlength: 2,
+          required: true
+        },
+        turnoverAmount: {
+          range: [1, 999],
+          required: true
+        }
+      },
+      highlight: function (element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error')
+      },
+      success: function (element) {
+        element.closest('.form-group').removeClass('has-error').addClass('has-success')
+      }
+    })
+  }
+
   render() {
     if (this.isRender === true) {
       this.setValue()
@@ -67,7 +88,7 @@ class FormComTurnoverView extends Component {
                 </button>
                 <h4 className="modal-title" id="myModalLabel">备件流水明细</h4>
               </div>
-              <form>
+              <form id="form-com-turnover">
               <div className="modal-body">
                 <div className="form-group">
                   <label htmlFor="reportID">维修编号</label>
@@ -75,7 +96,7 @@ class FormComTurnoverView extends Component {
                 </div>
                 <div className="form-group">
                   <label htmlFor="turnoverComName">备件名称<span style={{color: "red"}}>{"*"}</span></label>
-                  <input type="text" className="form-control" id="turnoverComName" placeholder="Enter component's name" ref="turnoverComName" required/>
+                  <input type="text" className="form-control" id="turnoverComName" name="turnoverComName" placeholder="Enter component's name" ref="turnoverComName" required/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="turnoverComModel">型号</label>
@@ -83,7 +104,7 @@ class FormComTurnoverView extends Component {
                 </div>
                 <div className="form-group">
                   <label htmlFor="turnoverAmount">数量<span style={{color: "red"}}>{"*"}</span></label>
-                  <input type="number" className="form-control" id="turnoverAmount" placeholder="Enter component's amount" ref="turnoverAmount" required/>
+                  <input type="number" className="form-control" id="turnoverAmount" name="turnoverAmount" placeholder="Enter component's amount" ref="turnoverAmount" required/>
                 </div>
                 <div className="form-group">
                   <label htmlFor="turnoverState">流水状态</label>

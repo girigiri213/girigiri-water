@@ -62,6 +62,49 @@ class FormClientView extends Component {
     }
   }
 
+  componentDidMount() {
+    $('#form-client').validate({
+      rules: {
+        IDcard: {
+          minlength: 18,
+          maxlength: 18,
+          required: true
+        },
+        telephone: {
+          minlength: 8,
+          maxlength: 12,
+          required: false
+        },
+        mobilephone: {
+          minlength: 11,
+          maxlength: 11,
+          required: true
+        },
+        address: {
+          required: true
+        },
+        zipCode: {
+          minlength: 6,
+          maxlength: 6,
+          required: false
+        },
+        contacts: {
+          required: true
+        },
+        email: {
+          email: true,
+          required: false
+        }
+      },
+      highlight: function (element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error')
+      },
+      success: function (element) {
+        element.closest('.form-group').removeClass('has-error').addClass('has-success')
+      }
+    })
+  }
+
   render() {
     if (this.isRender === true) {
       this.setValue()
@@ -79,14 +122,14 @@ class FormClientView extends Component {
             </button>
             <h4 className="modal-title" id="myModalLabel">客户信息</h4>
           </div>
-          <form>
+          <form id="form-client">
           <div className="modal-body">
             <div className="form-group">
               <label htmlFor="IDcard">
                 身份证编号
                 <span style={{color: "red"}}>{"*"}</span>
               </label>
-              <input type="text" className="form-control" id="IDcard" ref="IDcard" placeholder="Enter ID number" required/>
+              <input type="text" className="form-control" id="IDcard" name="IDcard" ref="IDcard" placeholder="Enter ID number" required/>
             </div>
             <div className="form-group">
               <label htmlFor="deliverDeviceDate">客户送机时间</label>
@@ -107,27 +150,27 @@ class FormClientView extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="telephone">固话</label>
-              <input type="text" className="form-control" id="telephone" placeholder="Enter telephone number" ref="telephone"/>
+              <input type="text" className="form-control" id="telephone" name="telephone" placeholder="Enter telephone number" ref="telephone"/>
             </div>
             <div className="form-group">
               <label htmlFor="mobilephone">移动电话<span style={{color: "red"}}>{"*"}</span></label>
-              <input type="text" className="form-control" id="mobilephone" placeholder="Enter mobilephone number" ref="mobilephone" required/>
+              <input type="text" className="form-control" id="mobilephone" name="mobilephone" placeholder="Enter mobilephone number" ref="mobilephone" required/>
             </div>
             <div className="form-group">
               <label htmlFor="address">客户地址<span style={{color: "red"}}>{"*"}</span></label>
-              <input type="text" className="form-control" id="address" placeholder="Enter client's address" ref="address" required/>
+              <input type="text" className="form-control" id="address" name="address" placeholder="Enter client's address" ref="address" required/>
             </div>
             <div className="form-group">
               <label htmlFor="zipCode">邮编</label>
-              <input type="text" className="form-control" id="zipCode" placeholder="Enter zip code" ref="zipCode"/>
+              <input type="text" className="form-control" id="zipCode" name="zipCode" placeholder="Enter zip code" ref="zipCode"/>
             </div>
             <div className="form-group">
               <label htmlFor="contacts">联系人<span style={{color: "red"}}>{"*"}</span></label>
-              <input type="text" className="form-control" id="contacts" placeholder="Enter contacts" ref="contacts" required/>
+              <input type="text" className="form-control" id="contacts" name="contacts" placeholder="Enter contacts" ref="contacts" required/>
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" className="form-control" id="email" placeholder="Enter email address" ref="email"/>
+              <input type="text" className="form-control" id="email" name="email" placeholder="Enter email address" ref="email"/>
             </div>
           </div>
           <div className="modal-footer">
