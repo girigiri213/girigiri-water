@@ -157,28 +157,28 @@ class FormReportRepairView extends Component {
               </div>
               <form id="form-report-repair">
               <div className="modal-body">
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="reportID">报修编号</label>
                   <input type="text" className="form-control" id="reportID" placeholder="Automatic report ID" ref="reportID" disabled />
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="reportClient">报修客户</label>
                   <select className="form-control" id="reportClient" ref="reportClient">
                   </select>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="reportDate">报修时间</label>
                   <input type="date" className="form-control" id="reportDate" ref="reportDate"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="estimatedPrice">预估价格</label>
                   <input type="text" className="form-control" id="estimatedPrice" placeholder="Enter estimated price" ref="estimatedPrice"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="finishDate">预估完成时间</label>
                   <input type="date" className="form-control" id="finishDate" ref="finishDate"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="reportState">报修状态</label>
                   <select className="form-control" id="reportState" ref="reportState">
                     <option value="1">进行中</option>
@@ -186,7 +186,7 @@ class FormReportRepairView extends Component {
                     <option value="3">撤销</option>
                   </select>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="deviceType">产品类型<span style={{color: "red"}}>{"*"}</span></label>
                   <select className="form-control" id="deviceType" ref="deviceType" required>
                     <option value="1">台式机</option>
@@ -196,70 +196,70 @@ class FormReportRepairView extends Component {
                     <option value="5">其他</option>
                   </select>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="deviceBrand">机器品牌</label>
                   <input type="text" className="form-control" id="deviceBrand" placeholder="Enter Device Brand" ref="deviceBrand"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="deviceModel">机器型号</label>
                   <input type="text" className="form-control" id="deviceModel" placeholder="Enter Device Model" ref="deviceModel"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="serialNumber">系列号</label>
                   <input type="text" className="form-control" id="serialNumber" placeholder="Enter serial number" ref="serialNumber"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="missingParts">缺少零件</label>
                   <input type="text" className="form-control" id="missingParts" placeholder="Enter missing parts" ref="missingParts"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="symptom">故障现象<span style={{color: "red"}}>{"*"}</span></label>
                   <input type="text" className="form-control" id="symptom" name="symptom" placeholder="Enter symptom" ref="symptom" required/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="faultType">故障类型<span style={{color: "red"}}>{"*"}</span></label>
                   <select className="form-control" id="faultType" ref="faultType" required>
                     <option value="1">固定性故障</option>
                     <option value="2">间歇性故障</option>
                   </select>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="appearanceCheck">机器外观检查</label>
                   <input type="text" className="form-control" id="appearanceCheck" placeholder="Enter appearance state" ref="appearanceCheck"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="passwd">开机口令</label>
                   <input type="text" className="form-control" id="passwd" placeholder="Enter device's password" ref="passwd"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="vitalInfo">重要资料</label>
                   <input type="text" className="form-control" id="vitalInfo" placeholder="Enter important files" ref="vitalInfo"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="hdd">HDD</label>
                   <input type="text" className="form-control" id="hdd" placeholder="Enter if any hdd" ref="hdd"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="memory">内存</label>
                   <input type="text" className="form-control" id="memory" placeholder="Enter if any memory" ref="memory"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="pcCard">外置PC卡</label>
                   <input type="text" className="form-control" id="pcCard" placeholder="Enter if any external PC card" ref="pcCard"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="acAdapter">AC适配器</label>
                   <input type="text" className="form-control" id="acAdapter" placeholder="Enter if any AC adapter" ref="acAdapter"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="battery">电池</label>
                   <input type="text" className="form-control" id="battery" placeholder="Enter if any bettery" ref="battery"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="cdrom">外接光驱</label>
                   <input type="text" className="form-control" id="cdrom" placeholder="Enter if any CD-ROM" ref="cdrom"/>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group">
                   <label htmlFor="otherInfo">其他</label>
                   <input type="text" className="form-control" id="otherInfo" placeholder="Enter if any other Infomation" ref="otherInfo"/>
                 </div>

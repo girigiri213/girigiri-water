@@ -103,52 +103,52 @@ class FormRepairInfoView extends Component {
               </div>
               <form>
                 <div className="modal-body">
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="reportID">报修编号</label>
                     <input type="text" className="form-control" id="reportID" placeholder="Automatic report ID" ref="reportID" disabled />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="serviceStaff">维修人员</label>
                     <select className="form-control" id="serviceStaff" ref="serviceStaff">
                     </select>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="dispatchDate">分配时间</label>
                     <input type="date" className="form-control" id="dispatchDate" ref="dispatchDate"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="checkInfo">检测记录</label>
                     <input type="text" className="form-control" id="checkInfo" placeholder="Enter check infomation" ref="checkInfo"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="repairInfo">维修记录</label>
                     <input type="text" className="form-control" id="repairInfo" placeholder="Enter repair infomation" ref="repairInfo"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="repairDate">维修检测时间</label>
                     <input type="date" className="form-control" id="repairDate" ref="repairDate"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="workload">工作量</label>
                     <input type="text" className="form-control" id="workload" placeholder="Enter workload" ref="workload"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="laborCosts">人工费</label>
                     <input type="text" className="form-control" id="laborCosts" placeholder="Enter labor costs" ref="laborCosts"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="materialFee">材料费</label>
                     <input type="text" className="form-control" id="materialFee" placeholder="Enter material fee" ref="materialFee"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="reportPromise">报修承诺</label>
                     <input type="text" className="form-control" id="reportPromise" placeholder="Enter report's promise" ref="repairPromise"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="noticeItems">注意事项</label>
                     <input type="text" className="form-control" id="noticeItems" placeholder="Enter notice items" ref="noticeItems"/>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="repairState">维修状态</label>
                     <select className="form-control" id="repairState" ref="repairState">
                       <option value="1">未分配</option>
@@ -157,7 +157,7 @@ class FormRepairInfoView extends Component {
                       <option value="4">撤销</option>
                     </select>
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group">
                     <label htmlFor="delayState">维修延迟程度</label>
                     <select className="form-control" id="delayState" ref="delayState">
                       <option value="1">一般</option>
